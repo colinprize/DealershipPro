@@ -45,9 +45,6 @@ def api_technicians(request):
     else:
         try:
             content= json.loads(request.body)
-            employeeid = content["employee_id"]
-            employee = Technician.objects.get(employee_id=employeeid)
-            content["employee_id"] = employee
             technician = Technician.objects.create(**content)
             return JsonResponse(
                 technician,
