@@ -82,7 +82,6 @@ function VehicleForm() {
                     <div className="form-floating mb-3">
                         <input onChange={handlePictureChange}
                             required type="picture"
-                            placeholder="http://www.yourpictureurl.com"
                             name="picture"
                             id="picture"
                             className="form-control"
