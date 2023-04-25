@@ -4,6 +4,9 @@ import Nav from './Nav';
 import ManufacturerList from "./ManufacturerList";
 import ManufacturerForm from "./ManufacturerForm";
 import AutomobileForm from './AutomobileForm';
+import VehicleForm from './VehicleForm';
+import VehicleList from './VehicleList';
+import AutomobileInventoryList from './AutomobileInventoryList';
 
 
 function App(props) {
@@ -20,7 +23,11 @@ function App(props) {
           <Route path="automobiles" >
             <Route path="new" element={<AutomobileForm />}/>
           </Route>
+          <Route path="vehicleform" element ={<VehicleForm />} />
+          <Route path="vehiclelist" element ={<VehicleList/>} />
+          <Route path="automobileinventorylist" element ={<AutomobileInventoryList/>} />
         </Routes>
+
       </div>
     </BrowserRouter>
   );
