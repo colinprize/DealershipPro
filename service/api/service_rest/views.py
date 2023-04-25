@@ -39,7 +39,7 @@ def api_technicians(request):
     if request.method == "GET":
         technicians = Technician.objects.all()
         return JsonResponse(
-            {"technician": technicians},
+            {"technicians": technicians},
             encoder=TechnicianEncoder,
             safe=False
         )
