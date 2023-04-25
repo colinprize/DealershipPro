@@ -51,7 +51,8 @@ def api_technicians(request, id):
             encoder=TechnicianEncoder,
             safe=False,
         )
-    else request.method == "DELETE":
+    else:
+        request.method == "DELETE"
         count, _ = Technician.objects.filter(id=id).delete()
         return JsonResponse({"deleted": count > 0})
 
@@ -65,11 +66,12 @@ def api_list_appointments(request):
             encoder=AppointmentEncoder,
             safe=False
         )
-    else request.method == "POST":
+    else:
+        request.method == "POST"
         content = json.loads(request.body)
         appointment = Appointment.objects.create(**content)
         return JsonResponse(
             {"appointment": appointment},
-            encoder=AppointmentEncode,
+            encoder=AppointmentEncoder,
             safe = False,
         )
