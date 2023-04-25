@@ -40,12 +40,14 @@ def api_technicians(request):
         technicians = Technician.objects.all()
         return JsonResponse(
             {"technicians": technicians},
-            encoder=TechnicianEncoder,
-            safe=False
+            encoder=TechnicianEncoder
         )
     else:
         try:
             content= json.loads(request.body)
+            employeeid = content["employee_id"]
+            employee = Technician.objects.get(employee_id=employeeid)
+            content["employee_id"] = employee
             technician = Technician.objects.create(**content)
             return JsonResponse(
                 technician,
@@ -71,14 +73,12 @@ def api_list_appointments(request):
         return JsonResponse(
             {"appointments": appointments},
             encoder=AppointmentEncoder,
-            safe=False
         )
     else:
         request.method == "POST"
         content = json.loads(request.body)
         appointment = Appointment.objects.create(**content)
         return JsonResponse(
-            {"appointment": appointment},
+            appointment,
             encoder=AppointmentEncoder,
-            safe = False,
         )
