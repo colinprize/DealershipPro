@@ -34,8 +34,8 @@ class AppointmentEncoder(ModelEncoder):
         "technician": TechnicianEncoder
     }
 
-@require_http_methods(["GET", "POST"])
-def api_technicians(request):
+@require_http_methods(["GET", "POST","DELETE"])
+def api_technicians(request, id):
     if request.method == "GET":
         technicians = Technician.objects.all()
         return JsonResponse(
@@ -50,4 +50,26 @@ def api_technicians(request):
             {"technician": technician},
             encoder=TechnicianEncoder,
             safe=False,
+        )
+    else request.method == "DELETE":
+        count, _ = Technician.objects.filter(id=id).delete()
+        return JsonResponse({"deleted": count > 0})
+
+
+@require_http_methods(["GET","POST", "DELETE"])
+def api_list_appointments(request):
+    if request.method == "GET":
+        appointments= Appointment.objects.all()
+        return JsonResponse(
+            {"appointments": appointments},
+            encoder=AppointmentEncoder,
+            safe=False
+        )
+    else request.method == "POST":
+        content = json.loads(request.body)
+        appointment = Appointment.objects.create(**content)
+        return JsonResponse(
+            {"appointment": appointment},
+            encoder=AppointmentEncode,
+            safe = False,
         )
