@@ -43,14 +43,21 @@ def api_technicians(request):
             encoder=TechnicianEncoder,
             safe=False
         )
-    elif request.method == "POST":
-        content= json.loads(request.body)
-        technician = Technician.objects.create(**content)
-        return JsonResponse(
-            {"technician": technician},
-            encoder=TechnicianEncoder,
-            safe=False,
-        )
+    else:
+        try:
+            content= json.loads(request.body)
+            technician = Technician.objects.create(**content)
+            return JsonResponse(
+                technician,
+                encoder=TechnicianEncoder,
+                safe=False,
+            )
+        except:
+            response = JsonResponse(
+                {"message": "Could not create the technician"}
+            )
+            response.status_code = 400
+            return response
     # else:
     #     request.method == "DELETE"
     #     count, _ = Technician.objects.filter(id=id).delete()
