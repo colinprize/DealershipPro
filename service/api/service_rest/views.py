@@ -80,3 +80,24 @@ def api_list_appointments(request):
             encoder=AppointmentEncoder,
             safe=False
         )
+
+@require_http_methods(["PUT"])
+def cancel_appointment(request, id):
+    appointment = Appointment.objects.get(id=id)
+    appointment.cancel()
+    return JsonResponse(
+        appointment,
+        encoder=AppointmentEncoder,
+        safe=False
+    )
+
+
+@require_http_methods(["PUT"])
+def finish_appointment(request, id):
+    appointment = Appointment.objects.get(id=id)
+    appointment.finish()
+    return JsonResponse(
+        appointment,
+        encoder=AppointmentEncoder,
+        safe=False
+    )

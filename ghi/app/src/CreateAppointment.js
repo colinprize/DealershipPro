@@ -46,6 +46,8 @@ function CreateAppointment() {
         data.vin = vin;
         data.customer = customer;
         data.reason = reason;
+        data.date_time =
+        data.date_time =
 
         const url = "http://localhost:8080/api/appointments/";
         const fetchConfig = {
