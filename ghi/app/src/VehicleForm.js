@@ -30,7 +30,7 @@ function VehicleForm() {
         data.picture_url = picture;
         data.manufacturer_id = manufacturer;
 
-        const url = "http://localhost:8100/api/models/";
+        const url = 'http://localhost:8100/api/models/';
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -40,6 +40,7 @@ function VehicleForm() {
         };
 
         const response = await fetch(url, fetchConfig);
+        console.log(response)
         if (response.ok) {
             setModel("");
             setPicture("");
