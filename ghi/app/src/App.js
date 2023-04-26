@@ -14,6 +14,7 @@ import SalesPersonForm from './SalesPersonForm';
 import SalesPersonList from './SalesPersonList';
 import CustomerForm from './CustomerForm';
 import CustomerList from './CustomerList';
+import ServiceAppointmentList from './ServiceAppointmentList';
 
 function App(props) {
   return (
@@ -43,6 +44,7 @@ function App(props) {
           <Route path="addtech" element ={<AddTechnicianForm />} />
           <Route path="technicianlist" element ={<TechnicianList />} />
           <Route path="createappointment" element={<CreateAppointment />} />
+          <Route path="serviceappointments" element={<ServiceAppointmentList />} />
         </Routes>
 
       </div>
