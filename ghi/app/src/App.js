@@ -15,6 +15,7 @@ import SalesPersonList from './SalesPersonList';
 import CustomerForm from './CustomerForm';
 import CustomerList from './CustomerList';
 import ServiceAppointmentList from './ServiceAppointmentList';
+import ServiceHistory from './ServiceHistory';
 
 function App(props) {
   return (

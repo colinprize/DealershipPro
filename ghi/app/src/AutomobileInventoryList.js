@@ -36,7 +36,7 @@ return (
                 <td>{auto.vin}</td>
                 <td>{auto.color}</td>
                 <td>{auto.year}</td>
-                <td>{auto.model.name}</td>
+                <td>{auto.model.manufacturer}</td>
                 <td>{auto.model.sold}</td>
             </tr>
         );
