@@ -41,6 +41,8 @@ function ServiceAppointmentList () {
                             <td>{new Date(appointment.date_time).toLocaleTimeString()}</td>
                             <td>{appointment.technician}</td>
                             <td>{appointment.reason}</td>
+                            <td><button onClick={() => this.cancel(appointment.vin)}></button></td>
+                            <td><button onClick={() => this.finish(appointment.vin)}></button></td>
                         </tr>
                     )
                 })}

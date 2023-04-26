@@ -45,6 +45,7 @@ function App(props) {
           <Route path="technicianlist" element ={<TechnicianList />} />
           <Route path="createappointment" element={<CreateAppointment />} />
           <Route path="serviceappointments" element={<ServiceAppointmentList />} />
+          <Route path="servicehistory" element={<ServiceHistory />} />
         </Routes>
 
       </div>

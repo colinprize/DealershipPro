@@ -46,8 +46,7 @@ function CreateAppointment() {
         data.vin = vin;
         data.customer = customer;
         data.reason = reason;
-        data.date_time =
-        data.date_time =
+        data.date_time =  date + "T" + time + ":00Z";
 
         const url = "http://localhost:8080/api/appointments/";
         const fetchConfig = {
@@ -138,7 +137,7 @@ function CreateAppointment() {
                                 className="form-control"
                                 value={time}
                             />
-                            <label htmlFor="reason">Reason</label>
+                            <label htmlFor="time">Time</label>
                         </div>
                         <div className="mb-3">
                             <select
@@ -157,7 +156,7 @@ function CreateAppointment() {
                                 })}
                             </select>
                         </div>
-                        <button className="btn btn-primary">Create Technician</button>
+                        <button className="btn btn-primary">Create Appointment</button>
                     </form>
                 </div>
             </div>
