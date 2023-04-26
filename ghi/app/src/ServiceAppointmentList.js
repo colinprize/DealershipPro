@@ -25,8 +25,8 @@ function ServiceAppointmentList () {
                 <tr>
                     <th>Vin</th>
                     <th>Customer</th>
-                    {/* <th>Date</th> */}
-                    {/* <th>Time</th> */}
+                    <th>Date</th>
+                    <th>Time</th>
                     <th>Technician</th>
                     <th>Reason</th>
                 </tr>
@@ -37,8 +37,8 @@ function ServiceAppointmentList () {
                         <tr key={appointment.vin} value={appointment.vin}>
                             <td>{appointment.vin}</td>
                             <td>{appointment.customer}</td>
-                            {/* <td>{appointment.date_time}</td> */}
-                            {/* <td>{appointment.date_time}</td> */}
+                            <td>{new Date(appointment.date_time).toLocaleDateString()}</td>
+                            <td>{new Date(appointment.date_time).toLocaleTimeString()}</td>
                             <td>{appointment.technician}</td>
                             <td>{appointment.reason}</td>
                         </tr>

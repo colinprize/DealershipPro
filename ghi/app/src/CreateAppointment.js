@@ -5,7 +5,8 @@ function CreateAppointment() {
     const [technician, setTechnician] = useState("")
     const [vin, setVin] = useState("")
     const [customer, setCustomer] = useState("")
-    // const [date_time, setDateTime] = useState("")
+    const [date, setDate] = useState("")
+    const [time, setTime] = useState("")
     const [reason, setReason] = useState("")
 
     const handleTechnicianChange = (event) => {
@@ -22,6 +23,16 @@ function CreateAppointment() {
     const handleCustomerChange = (event) => {
         const value = event.target.value;
         setCustomer(value);
+    }
+
+    const handleDateChange = (event) => {
+        const value = event.target.value;
+        setDate(value);
+    }
+
+    const handleTimeChange = (event) => {
+        const value = event.target.value;
+        setTime(value);
     }
 
     const handleReasonChange = (event) => {
@@ -49,6 +60,8 @@ function CreateAppointment() {
         if (response.ok) {
             setVin("");
             setCustomer("");
+            setDate("");
+            setTime("");
             setReason("");
         }
 
@@ -102,6 +115,26 @@ function CreateAppointment() {
                                 id="reason"
                                 className="form-control"
                                 value={reason}
+                            />
+                            <label htmlFor="reason">Reason</label>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <input onChange={handleDateChange}
+                                required type="date"
+                                name="date"
+                                id="date"
+                                className="form-control"
+                                value={date}
+                            />
+                            <label htmlFor="date">Date</label>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <input onChange={handleTimeChange}
+                                required type="time"
+                                name="time"
+                                id="time"
+                                className="form-control"
+                                value={time}
                             />
                             <label htmlFor="reason">Reason</label>
                         </div>
