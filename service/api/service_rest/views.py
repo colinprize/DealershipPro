@@ -63,7 +63,7 @@ def api_technicians(request):
     #     return JsonResponse({"deleted": count > 0})
 
 
-@require_http_methods(["GET","POST", "DELETE"])
+@require_http_methods(["GET","POST"])
 def api_list_appointments(request):
     if request.method == "GET":
         appointments= Appointment.objects.all()
@@ -78,4 +78,5 @@ def api_list_appointments(request):
         return JsonResponse(
             appointment,
             encoder=AppointmentEncoder,
+            safe=False
         )
