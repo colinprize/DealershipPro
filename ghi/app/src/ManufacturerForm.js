@@ -40,7 +40,7 @@ function ManufacturerForm() {
             <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
                     <h2 className="display-5 text-center"><b>Create a manufacturer</b></h2>
-                    <form onSubmit={handleSubmit} id="create-new-service-appointment">
+                    <form onSubmit={handleSubmit} id="create-a-new-manufacturer">
                         <div className="form-floating mb-3">
                             <input onChange={handleNameChange} value={name} placeholder="name" required type="text" name="name" id="name"  className="form-control"/>
                             <label htmlFor="name">Name</label>

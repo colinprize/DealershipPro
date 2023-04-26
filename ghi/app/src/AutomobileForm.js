@@ -34,6 +34,8 @@ function AutomobileForm() {
         setModel(value);
     }
 
+
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = {};
@@ -73,7 +75,7 @@ function AutomobileForm() {
         const response = await fetch("http://localhost:8100/api/models/");
         if (response.ok) {
             const data = await response.json();
-            setModel(data.model);
+            setModels(data.models);
         } else {
             console.error(response);
         }
