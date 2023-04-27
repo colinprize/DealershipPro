@@ -23,7 +23,6 @@ class TechnicianEncoder(ModelEncoder):
 class AppointmentEncoder(ModelEncoder):
     model = Appointment
     properties = [
-        'id',
         'date_time',
         'reason',
         'status',
@@ -94,6 +93,21 @@ def api_list_appointments(request):
             encoder=AppointmentEncoder,
             safe=False
         )
+
+@require_http_methods(["GET"])
+def api_detail_appointments(request, id):
+    if request.method == 'GET':
+        try:
+            appointment = Appointment.objects.get(id=id)
+            return JsonResponse(
+                appointment,
+                encoder=AppointmentEncoder,
+                safe=False
+            )
+        except Appointment.DoesNotExist:
+            return JsonResponse(
+                {"message": "Invaild ID"},
+                status=400)
 
 @require_http_methods(["PUT"])
 def cancel_appointment(request, id):

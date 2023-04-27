@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 function ServiceHistory (){
    const[appointments, setAppointments] = useState([])
    const[vinQuery, setVinQuery] = useState("");
-   const[vinresult, setVinResult] = useState([]);
+   const[vinResult, setVinResult] = useState([]);
 
    const fetchData = async() => {
         const Url = 'http://localhost:8080/api/appointments/';
@@ -45,7 +45,7 @@ function ServiceHistory (){
       />
         <button onClick={handleSearchButtonChange}
         type="button"
-        className="btn">
+        className="btn btn-primary">
         Enter VIN Query
         </button>
         <table className="table table-striped">
@@ -62,16 +62,21 @@ function ServiceHistory (){
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                {vinResult.map(appointment => {
+                return(
+                <tr key={appointment.vin}>
+                    <td>{appointment.vin}</td>
+                    <td>{appointment.is_vip}</td>
+                    <td>{appointment.customer}</td>
+                    <td>{new Date(appointment.date_time).toLocaleDateString()}</td>
+                    <td>{new Date(appointment.date_time).toLocaleDateString()}</td>
+                    <td>{appointment.technician}</td>
+                    <td>{appointment.reason}</td>
+                    <td>{appointment.status}</td>
                 </tr>
+                );
+
+            })}
             </tbody>
         </table>
     </div>

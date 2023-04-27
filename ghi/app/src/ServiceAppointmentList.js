@@ -62,7 +62,7 @@ function ServiceAppointmentList () {
             <tbody>
                 {appointments.map(appointment => {
                     return (
-                        <tr key={appointment.vin} value={appointment.vin}>
+                        <tr key={appointment.vin}>
                             <td>{appointment.vin}</td>
                             <td>{appointment.is_vip}</td>
                             <td>{appointment.customer}</td>
