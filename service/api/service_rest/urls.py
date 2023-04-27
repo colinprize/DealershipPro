@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import api_technicians, api_list_appointments, cancel_appointment, finish_appointment, delete_appointment, delete_technician, api_detail_appointments
+from .views import api_technicians, api_list_appointments, cancel_appointment, finish_appointment, delete_appointment, delete_technician
 
 urlpatterns = [
     path(
