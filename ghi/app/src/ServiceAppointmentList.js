@@ -17,30 +17,25 @@ function ServiceAppointmentList () {
         fetchData();
     }, []);
 
-    const cancel = async (event) => {
-        event.preventDefault();
-        const url = `http://localhost:8080/api/appointments/${appointments.id}/cancel`
+    const cancel = (appointment) => {
+
+        const url = `http://localhost:8080/api/appointments/${appointment.id}/cancel`
         const fetchConfig = {
             method: 'put',
             headers: {
                 'Content-Type': 'application/json',
             },
         };
-
-        const response = await fetch(url, fetchConfig)
     }
 
-    const finish = async (event) => {
-        event.preventDefault();
-        const url = `http://localhost:8080/api/appointments/${appointments.id}/finish`
+    const finish = (appointment) => {
+        const url = `http://localhost:8080/api/appointments/${appointment.id}/finish`
         const fetchConfig = {
             method: 'put',
             headers: {
                 'Content-Type': 'application/json',
             },
         };
-
-        const response = await fetch(url, fetchConfig)
     }
 
     return (
@@ -64,14 +59,14 @@ function ServiceAppointmentList () {
                     return (
                         <tr key={appointment.vin}>
                             <td>{appointment.vin}</td>
-                            <td>{appointment.is_vip}</td>
+                            <td>{appointment.is_vip === true ? "yes" : "no"}</td>
                             <td>{appointment.customer}</td>
                             <td>{new Date(appointment.date_time).toLocaleDateString()}</td>
                             <td>{new Date(appointment.date_time).toLocaleTimeString()}</td>
                             <td>{appointment.technician}</td>
                             <td>{appointment.reason}</td>
-                            <td><button type="button" className="btn btn-danger" onClick={cancel}></button></td>
-                            <td><button type="button" className="btn btn-primary" onClick={finish}></button></td>
+                            <td><button type="button" className="btn btn-danger" onClick={()=>cancel(appointment)}></button></td>
+                            <td><button type="button" className="btn btn-primary" onClick={()=>finish(appointment)}></button></td>
                         </tr>
                     )
                 })}
