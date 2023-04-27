@@ -21,8 +21,9 @@ The poller polls for the Automobile Value Object from the Inventory API.
 
 ## Service microservice
 
-For the Service microservice:
-    models:
+Service Microservice Models
+
+
     Technician:
         first_name
         last_name
