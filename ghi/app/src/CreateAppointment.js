@@ -52,6 +52,7 @@ function CreateAppointment() {
         data.customer = customer;
         data.reason = reason;
         data.date_time = dateFormat;
+        data.technician = technician;
 
         const url = "http://localhost:8080/api/appointments/";
         const fetchConfig = {
@@ -69,6 +70,7 @@ function CreateAppointment() {
             setDate("");
             setTime("");
             setReason("");
+            setTechnician("");
         }
 
     }
@@ -154,7 +156,7 @@ function CreateAppointment() {
                                 <option value="">Technician</option>
                                 {technicians.map((technician) => {
                                     return (
-                                        <option key={technician.last_name} value={technician.last_name}>
+                                        <option key={technician.employee_id} value={technician.employee_id}>
                                             {technician.first_name + " " + technician.last_name}
                                         </option>
                                     );

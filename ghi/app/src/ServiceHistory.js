@@ -6,15 +6,15 @@ const serviceSearch = () => {}
 
 
 function ServiceHistory (){
-   const[vinQuery, setVinQuery] = useState("")
-   const[]
+//    const[vinQuery, setVinQuery] = useState("")
+//    const[]
 
-   const handleSearchChange = (event) => {
-    event.preventdefault();
-    setSearchQuery(event.target.value);
-   };
+//    const handleSearchChange = (event) => {
+//     event.preventdefault();
+//     setSearchQuery(event.target.value);
+//    };
 
-   if(vinQuery == vin
+//    if(vinQuery == vin
 
     return (
     <div>

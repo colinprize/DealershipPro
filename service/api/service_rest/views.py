@@ -73,7 +73,6 @@ def api_list_appointments(request):
             encoder=AppointmentEncoder,
         )
     else:
-        request.method == "POST"
         content = json.loads(request.body)
         appointment = Appointment.objects.create(**content)
         return JsonResponse(

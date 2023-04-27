@@ -19,7 +19,7 @@ function ServiceAppointmentList () {
 
     const cancel = async (event) => {
         event.preventDefault();
-        const url = `http://localhost:8080/api/appointments/${appointment.id}/cancel`
+        const url = `http://localhost:8080/api/appointments/${appointments.id}/cancel`
         const fetchConfig = {
             method: 'put',
             headers: {
@@ -32,7 +32,7 @@ function ServiceAppointmentList () {
 
     const finish = async (event) => {
         event.preventDefault();
-        const url = `http://localhost:8080/api/appointments/${appointment.id}/finish`
+        const url = `http://localhost:8080/api/appointments/${appointments.id}/finish`
         const fetchConfig = {
             method: 'put',
             headers: {
@@ -55,6 +55,7 @@ function ServiceAppointmentList () {
                     <th>Time</th>
                     <th>Technician</th>
                     <th>Reason</th>
+                    <th>Finish/Cancel</th>
                 </tr>
             </thead>
             <tbody>
