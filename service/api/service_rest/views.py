@@ -28,11 +28,15 @@ class AppointmentEncoder(ModelEncoder):
         'status',
         'vin',
         'customer',
-        'technician'
+        'technician',
     ]
-    encoders= {
-        "technician": TechnicianEncoder
-    }
+    # encoders= {
+    #     "technician": TechnicianEncoder
+    # }
+
+    def get_extra_data(self, o):
+        return {"technician": o.technician.first_name}
+
 
 @require_http_methods(["GET", "POST"])
 def api_technicians(request):
@@ -76,17 +80,14 @@ def api_list_appointments(request):
         content = json.loads(request.body)
 
 
-        try:
-            technician = Technician.objects.get(employee_id=content["technician"])
-            content["technician"] = technician
-        except Technician.DoesNotExist:
-            return JsonResponse(
-                {"message": "That technician doesn't exist"},
-                status=400,
-            )
-
-
-
+        # try:
+        #     technician = Technician.objects.get(employee_id=content["technician"])
+        #     content["technician"] = technician
+        # except Technician.DoesNotExist:
+        #     return JsonResponse(
+        #         {"message": "That technician doesn't exist"},
+        #         status=400,
+        #     )
         appointment = Appointment.objects.create(**content)
         return JsonResponse(
             appointment,
@@ -95,10 +96,10 @@ def api_list_appointments(request):
         )
 
 @require_http_methods(["GET"])
-def api_detail_appointments(request, id):
+def api_detail_appointments(request, pk):
     if request.method == 'GET':
         try:
-            appointment = Appointment.objects.get(id=id)
+            appointment = Appointment.objects.get(id=pk)
             return JsonResponse(
                 appointment,
                 encoder=AppointmentEncoder,
@@ -106,7 +107,7 @@ def api_detail_appointments(request, id):
             )
         except Appointment.DoesNotExist:
             return JsonResponse(
-                {"message": "Invaild ID"},
+                {"message": "No Appointment"},
                 status=400)
 
 @require_http_methods(["PUT"])

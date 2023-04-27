@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class AutomobileVO(models.Model):
@@ -17,7 +18,7 @@ class Appointment(models.Model):
     date_time = models.DateTimeField()
     reason = models.CharField(max_length=300)
     status = models.CharField(max_length=30, default="BOOKED")
-    vin = models.CharField(max_length=17)
+    vin = models.CharField(max_length=17, unique=True)
     is_vip = models.BooleanField(default=False, null=True, blank=True)
     customer = models.CharField(max_length=100)
     technician = models.ForeignKey(
@@ -33,3 +34,6 @@ class Appointment(models.Model):
     def finish(self):
         self.status = "FINISHED"
         self.save()
+
+    def get_api_url(self):
+        return reverse("api_detail_appointments", kwargs={"pk": self.id})
