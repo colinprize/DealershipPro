@@ -16,7 +16,7 @@ class Technician(models.Model):
 class Appointment(models.Model):
     date_time = models.DateTimeField()
     reason = models.CharField(max_length=300)
-    status = models.CharField(max_length=30)
+    status = models.CharField(max_length=30, default="BOOKED")
     vin = models.CharField(max_length=17)
     customer = models.CharField(max_length=100)
     technician = models.ForeignKey(
@@ -24,3 +24,11 @@ class Appointment(models.Model):
         related_name = "appointment",
         on_delete = models.PROTECT,
     )
+
+    def cancel(self):
+        self.status = "CANCELLED"
+        self.save()
+
+    def finish(self):
+        self.status = "FINISHED"
+        self.save()

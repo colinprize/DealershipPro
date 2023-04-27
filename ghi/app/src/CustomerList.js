@@ -32,7 +32,7 @@ function CustomerList() {
                     </tr>
                 </thead>
                 <tbody>
-                    {customer && customer.map(customers => {
+                    {customer.map(customers => {
                         return (
                             <tr key={customers.id} value={customers.id}>
                                 <td>{customers.first_name}</td>

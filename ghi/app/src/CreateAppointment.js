@@ -5,7 +5,8 @@ function CreateAppointment() {
     const [technician, setTechnician] = useState("")
     const [vin, setVin] = useState("")
     const [customer, setCustomer] = useState("")
-    // const [date_time, setDateTime] = useState("")
+    const [date, setDate] = useState("")
+    const [time, setTime] = useState("")
     const [reason, setReason] = useState("")
 
     const handleTechnicianChange = (event) => {
@@ -24,6 +25,16 @@ function CreateAppointment() {
         setCustomer(value);
     }
 
+    const handleDateChange = (event) => {
+        const value = event.target.value;
+        setDate(value);
+    }
+
+    const handleTimeChange = (event) => {
+        const value = event.target.value;
+        setTime(value);
+    }
+
     const handleReasonChange = (event) => {
         const value = event.target.value;
         setReason(value);
@@ -35,6 +46,7 @@ function CreateAppointment() {
         data.vin = vin;
         data.customer = customer;
         data.reason = reason;
+        data.date_time =  date + "T" + time + ":00Z";
 
         const url = "http://localhost:8080/api/appointments/";
         const fetchConfig = {
@@ -49,6 +61,8 @@ function CreateAppointment() {
         if (response.ok) {
             setVin("");
             setCustomer("");
+            setDate("");
+            setTime("");
             setReason("");
         }
 
@@ -105,6 +119,26 @@ function CreateAppointment() {
                             />
                             <label htmlFor="reason">Reason</label>
                         </div>
+                        <div className="form-floating mb-3">
+                            <input onChange={handleDateChange}
+                                required type="date"
+                                name="date"
+                                id="date"
+                                className="form-control"
+                                value={date}
+                            />
+                            <label htmlFor="date">Date</label>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <input onChange={handleTimeChange}
+                                required type="time"
+                                name="time"
+                                id="time"
+                                className="form-control"
+                                value={time}
+                            />
+                            <label htmlFor="time">Time</label>
+                        </div>
                         <div className="mb-3">
                             <select
                                 onChange={handleTechnicianChange}
@@ -122,7 +156,7 @@ function CreateAppointment() {
                                 })}
                             </select>
                         </div>
-                        <button className="btn btn-primary">Create Technician</button>
+                        <button className="btn btn-primary">Create Appointment</button>
                     </form>
                 </div>
             </div>

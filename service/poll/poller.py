@@ -21,7 +21,6 @@ def get_automobiles():
             vin = autos["vin"],
             defaults = {"vin": autos["vin"]}
         )
-        print(content["autos"])
 
 def poll():
     while True:
