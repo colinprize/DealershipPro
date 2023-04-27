@@ -93,20 +93,20 @@ def api_list_appointments(request):
             safe=False
         )
 
-@require_http_methods(["GET"])
-def api_detail_appointments(request, pk):
-    if request.method == 'GET':
-        try:
-            appointment = Appointment.objects.get(id=pk)
-            return JsonResponse(
-                appointment,
-                encoder=AppointmentEncoder,
-                safe=False
-            )
-        except Appointment.DoesNotExist:
-            return JsonResponse(
-                {"message": "No Appointment"},
-                status=400)
+# @require_http_methods(["GET"])
+# def api_detail_appointments(request, pk):
+#     if request.method == 'GET':
+#         try:
+#             appointment = Appointment.objects.get(id=pk)
+#             return JsonResponse(
+#                 appointment,
+#                 encoder=AppointmentEncoder,
+#                 safe=False
+#             )
+#         except Appointment.DoesNotExist:
+#             return JsonResponse(
+#                 {"message": "No Appointment"},
+#                 status=400)
 
 @require_http_methods(["PUT"])
 def cancel_appointment(request, id):

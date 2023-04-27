@@ -20,7 +20,7 @@ urlpatterns = [
     path(
         "appointments/<int:id>", delete_appointment, name="delete_appointment"
     ),
-    path(
-        "showappointment/<int:pk>", api_detail_appointments, name="api_detail_appointments"
-    )
+#     path(
+#         "showappointment/<int:pk>", api_detail_appointments, name="api_detail_appointments"
+#     )
 ]
