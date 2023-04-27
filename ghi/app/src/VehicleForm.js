@@ -5,6 +5,7 @@ function VehicleForm() {
     const [model, setModel] = useState("");
     const [picture, setPicture] = useState("");
     const [manufacturer, setManufacturer] = useState("");
+    const [VIN, setVin] = useState("")
 
 
     const handleModelChange = (event) => {
@@ -22,6 +23,12 @@ function VehicleForm() {
         setManufacturer(value);
     }
 
+    const handleVinChange = (event) => {
+        const value = event.target.value;
+        setVin(value);
+    }
+
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -29,6 +36,7 @@ function VehicleForm() {
         data.name = model;
         data.picture_url = picture;
         data.manufacturer_id = manufacturer;
+        data.vin = VIN
 
         const url = 'http://localhost:8100/api/models/';
         const fetchConfig = {
@@ -45,6 +53,7 @@ function VehicleForm() {
             setModel("");
             setPicture("");
             setManufacturer("");
+            setVin("");
         }
 }
 
@@ -89,6 +98,16 @@ function VehicleForm() {
                             value={picture}
                         />
                         <label htmlFor="picture">Picture URL</label>
+                    </div>
+                    <div className="form-floating mb-3">
+                        <input onChange={handleVinChange}
+                            required type="vin"
+                            name="vin"
+                            id="vin"
+                            className="form-control"
+                            value={VIN}
+                        />
+                        <label htmlFor="vin">VIN</label>
                     </div>
                     <div className="mb-3">
                         <select
