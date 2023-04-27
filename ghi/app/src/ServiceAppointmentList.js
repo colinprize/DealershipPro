@@ -17,6 +17,33 @@ function ServiceAppointmentList () {
         fetchData();
     }, []);
 
+    const cancel = async (event) => {
+        event.preventDefault();
+        const url = `http://localhost:8080/api/appointments/${appointment.id}/cancel`
+        const fetchConfig = {
+            method: 'put',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+
+        const response = await fetch(url, fetchConfig)
+    }
+
+    const finish = async (event) => {
+        const url = `http://localhost:8080/api/appointments/${appointment.id}/finish`
+        const fetchConfig = {
+            method: 'put',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+
+        const response = await fetch(url, fetchConfig)
+    }
+
     return (
         <div>
             <h1>Service Appointments</h1>
@@ -41,8 +68,8 @@ function ServiceAppointmentList () {
                             <td>{new Date(appointment.date_time).toLocaleTimeString()}</td>
                             <td>{appointment.technician}</td>
                             <td>{appointment.reason}</td>
-                            <td><button onClick={() => this.cancel(appointment.vin)}></button></td>
-                            <td><button onClick={() => this.finish(appointment.vin)}></button></td>
+                            <td><button onClick={cancel}></button></td>
+                            <td><button onClick={finish}></button></td>
                         </tr>
                     )
                 })}

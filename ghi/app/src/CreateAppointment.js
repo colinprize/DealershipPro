@@ -149,7 +149,7 @@ function CreateAppointment() {
                                 <option value="">Technician</option>
                                 {technicians.map((technician) => {
                                     return (
-                                        <option key={technician.id} value={technician.id}>
+                                        <option key={technician.last_name} value={technician.last_name}>
                                             {technician.first_name + " " + technician.last_name}
                                         </option>
                                     );
