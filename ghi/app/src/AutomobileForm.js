@@ -4,7 +4,6 @@ function AutomobileForm() {
     const [color, setColor] = useState('');
     const [year, setYear] = useState('');
     const [vin, setVin] = useState('');
-    // const [sold, setSold] = useState('')
     const [model, setModel] = useState('')
     const [models, setModels] = useState([])
 
@@ -24,14 +23,14 @@ function AutomobileForm() {
         setVin(value);
     }
 
-    // const handleSoldChange = (event) => {
-    //     const value = event.target.value;
-    //     setSold(value);
-    // }
-
     const handleModelChange = (event) => {
         const value = event.target.value;
         setModel(value);
+    }
+
+    const handleModelsChange = (event) => {
+        const value = event.target.value;
+        setModels(value);
     }
 
 
@@ -43,12 +42,11 @@ function AutomobileForm() {
         data.color = color;
         data.year = year;
         data.vin = vin;
-        // data.sold = sold;
-        data.model = model;
-        data.models = models;
+        data.model_id = model;
 
 
-        const AutomobileUrl = 'http://localhost:8100/api/automobiles/'
+
+        const AutomobileUrl = "http://localhost:8100/api/automobiles/"
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -65,9 +63,7 @@ function AutomobileForm() {
             setColor('');
             setYear('');
             setVin('');
-            // setSold('');
             setModel('');
-            setModels([])
         }
     }
 
@@ -109,9 +105,9 @@ function AutomobileForm() {
                         <option value="">Choose a model</option>
                             {models.map(model => {
                                 return (
-                                    <option key={model.id} value={model.id}>
-                                    {model.name}
-                                  </option>
+                                    <option value={model.id} key={model.id}>
+                                     {model.name}
+                                    </option>
                                 )
                             })}
                         </select>

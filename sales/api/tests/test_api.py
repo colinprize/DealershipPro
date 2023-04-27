@@ -1,11 +1,11 @@
 import json
-from sales_rest.models import Salesperson, Customer, Sale, AutomobileVO
+from sales_rest.models import SalesPerson, Customer, SaleRecord, AutomobileVO
 from django.test import TransactionTestCase, Client
 
 class Tests(TransactionTestCase):
     ####SALESPEOPLE ENDPOINTS
     def test_sales_people_list(self):
-        Salesperson.objects.create(first_name="first", last_name="last", employee_id=1111)
+        SalesPerson.objects.create(first_name="first", last_name="last", employee_id=1111)
 
         client = Client()
         response = client.get("/api/salespeople/")
@@ -28,7 +28,7 @@ class Tests(TransactionTestCase):
         self.assertEqual(response.status_code, 200, msg="Did not get a 200 OK for the path projects/")
 
     def test_sales_people_delete(self):
-        Salesperson.objects.create(first_name="first", last_name="last", employee_id=1)
+        SalesPerson.objects.create(first_name="first", last_name="last", employee_id=1)
 
         client = Client()
         response = client.delete("/api/salespeople/1/")
@@ -74,10 +74,10 @@ class Tests(TransactionTestCase):
 
     ####SALES ENDPOINTS
     def test_sales_list(self):
-        salesperson = Salesperson.objects.create(first_name="first", last_name="last", employee_id=1)
+        salesperson = SalesPerson.objects.create(first_name="first", last_name="last", employee_id=1)
         customer = Customer.objects.create(first_name="first", last_name="last", address="111 1st Street", phone_number="111-111 1111")
         auto = AutomobileVO.objects.create(vin="1")
-        Sale.objects.create(automobile=auto, salesperson=salesperson, customer=customer, price=1000)
+        SaleRecord.objects.create(automobile=auto, salesperson=salesperson, customer=customer, price=1000)
 
         client = Client()
         response = client.get("/api/sales/")
@@ -88,7 +88,7 @@ class Tests(TransactionTestCase):
         self.assertEqual(len(data['sales']), 1, msg="Did not return correct number of sales.")
 
     def test_sales_create(self):
-        salesperson = Salesperson.objects.create(first_name="first", last_name="last", employee_id=2)
+        salesperson = SalesPerson.objects.create(first_name="first", last_name="last", employee_id=2)
         customer = Customer.objects.create(first_name="first", last_name="last", address="222 2nd Street", phone_number="222-222 2222")
         auto = AutomobileVO.objects.create(vin="2")
 
@@ -117,10 +117,10 @@ class Tests(TransactionTestCase):
         self.assertTrue(response.status_code == 404 or response.status_code == 400, msg="Did not get a 404 OK for non-existent customer/")
 
     def test_sale_delete(self):
-        salesperson = Salesperson.objects.create(first_name="first", last_name="last", employee_id=3)
+        salesperson = SalesPerson.objects.create(first_name="first", last_name="last", employee_id=3)
         customer = Customer.objects.create(first_name="first", last_name="last", address="333 3rd Street", phone_number="333-333 3333")
         auto = AutomobileVO.objects.create(vin="3")
-        sale = Sale.objects.create(automobile=auto, salesperson=salesperson, customer=customer, price=1000)
+        sale = SaleRecord.objects.create(automobile=auto, salesperson=salesperson, customer=customer, price=1000)
 
         client = Client()
         response = client.delete(f"/api/sales/{sale.id}/")
