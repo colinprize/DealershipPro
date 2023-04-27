@@ -50,6 +50,7 @@ function ServiceAppointmentList () {
             <thead>
                 <tr>
                     <th>Vin</th>
+                    <th>Is VIP?</th>
                     <th>Customer</th>
                     <th>Date</th>
                     <th>Time</th>
@@ -63,6 +64,7 @@ function ServiceAppointmentList () {
                     return (
                         <tr key={appointment.vin} value={appointment.vin}>
                             <td>{appointment.vin}</td>
+                            <td>{appointment.is_vip}</td>
                             <td>{appointment.customer}</td>
                             <td>{new Date(appointment.date_time).toLocaleDateString()}</td>
                             <td>{new Date(appointment.date_time).toLocaleTimeString()}</td>
