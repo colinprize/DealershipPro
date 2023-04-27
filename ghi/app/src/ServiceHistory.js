@@ -6,27 +6,32 @@ function ServiceHistory (){
    const[vinresult, setVinResult] = useState([]);
 
    const fetchData = async() => {
-    const Url = 'http://localhost:8080/api/appointments/';
+        const Url = 'http://localhost:8080/api/appointments/';
 
-    const response = await fetch(Url);
+        const response = await fetch(Url);
 
-        if (response.ok) {
-        const data = await response.json();
-        setAppointments(data.appointments);
-        }
-}
+            if (response.ok) {
+            const data = await response.json();
+            setAppointments(data.appointments);
+            }
+    }
 
     useEffect(() => {fetchData();
     }, []);
 
-
-
-
-
-
-   const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
+   const handleVinQueryChange = (event) => {
+    setVinQuery(event.target.value);
    };
+
+   const handleSearchButtonChange = (event) => {
+        let query = appointments.filter(appointment =>
+           {
+            return (
+                vinQuery == appointment.vin
+            )
+           });
+           setVinResult(query)
+   }
 
 
 
@@ -36,8 +41,13 @@ function ServiceHistory (){
         type="text"
         placeholder="Search"
         value={vinQuery}
-        onChange={handleSearchChange}
+        onChange={handleVinQueryChange}
       />
+        <button onClick={handleSearchButtonChange}
+        type="button"
+        className="btn">
+        Enter VIN Query
+        </button>
         <table className="table table-striped">
             <thead>
                 <tr>
