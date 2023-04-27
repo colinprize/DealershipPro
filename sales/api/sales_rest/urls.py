@@ -1,5 +1,11 @@
 from django.urls import path
-from .views import api_salesperson_list, api_detail_salesperson, customer_details, customer_list
+from .views import (api_salesperson_list,
+                    api_detail_salesperson,
+                    customer_details,
+                    customer_list,
+                    sales_list,
+                    sale_details,
+                    )
 
 urlpatterns = [
     path(
@@ -16,4 +22,7 @@ urlpatterns = [
 
     path("customers/<int:id>/", customer_details, name="customer_details",),
     path("customers/", customer_list, name="customer_list"),
+    path("sales/", sales_list, name="sales_list"),
+    path("sales/<int:id>", sale_details, name="sale_details")
+
 ]
