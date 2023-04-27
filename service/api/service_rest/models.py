@@ -18,6 +18,7 @@ class Appointment(models.Model):
     reason = models.CharField(max_length=300)
     status = models.CharField(max_length=30, default="BOOKED")
     vin = models.CharField(max_length=17)
+    # is_vip = models.BooleanField(default=False, null=True, blank=True)
     customer = models.CharField(max_length=100)
     technician = models.ForeignKey(
         Technician,

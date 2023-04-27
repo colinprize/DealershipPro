@@ -1,28 +1,48 @@
 import React, { useEffect, useState } from "react";
 
-const serviceSearch = () => {}
-
-
-
-
 function ServiceHistory (){
-//    const[vinQuery, setVinQuery] = useState("")
-//    const[]
+   const[appointments, setAppointments] = useState([])
+   const[vinQuery, setVinQuery] = useState("");
+   const[vinresult, setVinResult] = useState([]);
 
-//    const handleSearchChange = (event) => {
-//     event.preventdefault();
-//     setSearchQuery(event.target.value);
-//    };
+   const fetchData = async() => {
+    const Url = 'http://localhost:8080/api/appointments/';
 
-//    if(vinQuery == vin
+    const response = await fetch(Url);
+
+        if (response.ok) {
+        const data = await response.json();
+        setAppointments(data.appointments);
+        }
+}
+
+    useEffect(() => {fetchData();
+    }, []);
+
+
+
+
+
+
+   const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+   };
+
+
 
     return (
     <div>
+        <input
+        type="text"
+        placeholder="Search"
+        value={vinQuery}
+        onChange={handleSearchChange}
+      />
         <table className="table table-striped">
             <thead>
                 <tr>
                     <th>VIN</th>
-                    <th>is VIP?</th>
+                    <th>VIP</th>
                     <th>Customer</th>
                     <th>Date</th>
                     <th>Time</th>
