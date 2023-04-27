@@ -30,9 +30,6 @@ class AppointmentEncoder(ModelEncoder):
         'customer',
         'technician',
     ]
-    # encoders= {
-    #     "technician": TechnicianEncoder
-    # }
 
     def get_extra_data(self, o):
         return {"technician": o.technician.first_name}
@@ -92,21 +89,6 @@ def api_list_appointments(request):
             encoder=AppointmentEncoder,
             safe=False
         )
-
-# @require_http_methods(["GET"])
-# def api_detail_appointments(request, pk):
-#     if request.method == 'GET':
-#         try:
-#             appointment = Appointment.objects.get(id=pk)
-#             return JsonResponse(
-#                 appointment,
-#                 encoder=AppointmentEncoder,
-#                 safe=False
-#             )
-#         except Appointment.DoesNotExist:
-#             return JsonResponse(
-#                 {"message": "No Appointment"},
-#                 status=400)
 
 @require_http_methods(["PUT"])
 def cancel_appointment(request, id):
