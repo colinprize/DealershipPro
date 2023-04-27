@@ -22,7 +22,6 @@ function ServiceAppointmentList () {
         const url = `http://localhost:8080/api/appointments/${appointment.id}/cancel`
         const fetchConfig = {
             method: 'put',
-            body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -36,7 +35,6 @@ function ServiceAppointmentList () {
         const url = `http://localhost:8080/api/appointments/${appointment.id}/finish`
         const fetchConfig = {
             method: 'put',
-            body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json',
             },

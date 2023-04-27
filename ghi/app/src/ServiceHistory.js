@@ -7,13 +7,14 @@ const serviceSearch = () => {}
 
 function ServiceHistory (){
    const[vinQuery, setVinQuery] = useState("")
+   const[]
 
-//    const handleSearchChange = (event) => {
-//     event.preventdefault();
-//     setSearchQuery(event.target.value);
-//    };
+   const handleSearchChange = (event) => {
+    event.preventdefault();
+    setSearchQuery(event.target.value);
+   };
 
-//    if(searchQuery ==
+   if(vinQuery == vin
 
     return (
     <div>
