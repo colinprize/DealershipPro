@@ -32,6 +32,7 @@ function ServiceAppointmentList () {
     }
 
     const finish = async (event) => {
+        event.preventDefault();
         const url = `http://localhost:8080/api/appointments/${appointment.id}/finish`
         const fetchConfig = {
             method: 'put',
@@ -68,8 +69,8 @@ function ServiceAppointmentList () {
                             <td>{new Date(appointment.date_time).toLocaleTimeString()}</td>
                             <td>{appointment.technician}</td>
                             <td>{appointment.reason}</td>
-                            <td><button onClick={cancel}></button></td>
-                            <td><button onClick={finish}></button></td>
+                            <td><button type="button" className="btn btn-danger" onClick={cancel}></button></td>
+                            <td><button type="button" className="btn btn-primary" onClick={finish}></button></td>
                         </tr>
                     )
                 })}
