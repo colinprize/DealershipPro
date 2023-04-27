@@ -1,8 +1,19 @@
 import React, { useEffect, useState } from "react";
 
-function ServiceHistory (){
-//    const
+const serviceSearch = () => {}
 
+
+
+
+function ServiceHistory (){
+   const[vinQuery, setVinQuery] = useState("")
+
+//    const handleSearchChange = (event) => {
+//     event.preventdefault();
+//     setSearchQuery(event.target.value);
+//    };
+
+//    if(searchQuery ==
 
     return (
     <div>
@@ -21,6 +32,13 @@ function ServiceHistory (){
             </thead>
             <tbody>
                 <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td></td>
                 </tr>
             </tbody>
