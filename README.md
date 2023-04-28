@@ -93,7 +93,7 @@ microservice, here.
 
 ## Project Diagram
 
-!CarDiagram2.png
+!Project-Beta/CarDiagram2.png
 
 ## API Documentation
 
