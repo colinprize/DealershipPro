@@ -17,26 +17,26 @@ function ServiceAppointmentList () {
         fetchData();
     }, []);
 
-    const cancel = (appointment) => {
+    // const cancel = (appointment) => {
 
-        const url = `http://localhost:8080/api/appointments/${appointment.id}/cancel`
-        const fetchConfig = {
-            method: 'put',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        };
-    }
+    //     const url = `http://localhost:8080/api/appointments/${appointment.id}/cancel`
+    //     const fetchConfig = {
+    //         method: 'put',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //     };
+    // }
 
-    const finish = (appointment) => {
-        const url = `http://localhost:8080/api/appointments/${appointment.id}/finish`
-        const fetchConfig = {
-            method: 'put',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        };
-    }
+    // const finish = (appointment) => {
+    //     const url = `http://localhost:8080/api/appointments/${appointment.id}/finish`
+    //     const fetchConfig = {
+    //         method: 'put',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //     };
+    // }
 
     return (
         <div>
@@ -65,19 +65,20 @@ function ServiceAppointmentList () {
                             <td>{new Date(appointment.date_time).toLocaleTimeString()}</td>
                             <td>{appointment.technician}</td>
                             <td>{appointment.reason}</td>
-                            <td><button type="button" className="btn btn-danger" onClick={()=>cancel(appointment)}></button></td>
-                            <td><button type="button" className="btn btn-primary" onClick={()=>finish(appointment)}></button></td>
+                            <td><button type="button" className="btn btn-danger"></button></td>
+                            <td><button type="button" className="btn btn-primary"></button></td>
                         </tr>
                     )
                 })}
             </tbody>
         </table>
         </div>
+
     )
 
 
-
-
+    // onClick={()=>cancel(appointment)}
+    // onClick={()=>finish(appointment)}
 
 
 }

@@ -102,8 +102,8 @@ def cancel_appointment(request, id):
 
 
 @require_http_methods(["PUT"])
-def finish_appointment(request, id):
-    appointment = Appointment.objects.get(id=id)
+def finish_appointment(request, vin):
+    appointment = Appointment.objects.get(vin=vin)
     appointment.finish()
     return JsonResponse(
         appointment,
@@ -112,6 +112,6 @@ def finish_appointment(request, id):
     )
 
 @require_http_methods(["DELETE"])
-def delete_appointment(request, id):
-    count, _ = Appointment.objects.filter(id=id).delete()
+def delete_appointment(request, vin):
+    count, _ = Appointment.objects.filter(vin=vin).delete()
     return JsonResponse({"deleted": count > 0})
