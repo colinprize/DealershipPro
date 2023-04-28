@@ -112,6 +112,61 @@ AutomobileVO is the Value Object being polled with the poller from automobile in
 
 6. To access the front end you can go to http://localhost:3000/ where the REACT app lives
 
+## Front End URLS
+List of Manufacturers
+http://localhost:3000/manufacturers
+
+Create a new Manufacturer
+http://localhost:3000/manufacturers/new
+
+Add a new automobile to inventory
+http://localhost:3000/automobiles/new
+
+Create a new vehicle
+http://localhost:3000/vehicleform
+
+List of new vehicles
+http://localhost:3000/vehiclelist
+
+Inventory list
+http://localhost:3000/automobileinventorylist
+
+Add a Technician
+http://localhost:3000/addtech
+
+Technician List
+http://localhost:3000/technicianlist
+
+Create Service Appointment
+http://localhost:3000/createappointment
+
+Create a new Salesperson
+http://localhost:3000/salesperson/new
+
+List of Salespeople
+http://localhost:3000/salesperson
+
+Add a customer
+http://localhost:3000/customer/new
+
+List of Customers
+http://localhost:3000/customer
+
+Add a sale
+http://localhost:3000/salerecords/new
+
+Salespeople History
+http://localhost:3000/salerecords/history
+
+Sales list
+http://localhost:3000/salerecords
+
+List of Service Appointments
+http://localhost:3000/serviceappointments
+
+Service History
+http://localhost:3000/servicehistory
+
 
 ## Project Diagram
 #+html: <p align="center"><img src="img/CarDiagram2.png" /></p>
