@@ -92,8 +92,7 @@ microservice, here.
 
 
 ## Project Diagram
-
-![Diagram]PROJECT-BETA/CarDiagram2.png
+#+html: <p align="center"><img src="img/CarDiagram2.png" /></p>
 
 ## API Documentation
 
