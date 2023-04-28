@@ -11,8 +11,8 @@ function ServiceHistory (){
         const response = await fetch(Url);
 
             if (response.ok) {
-            const data = await response.json();
-            setAppointments(data.appointments);
+                const data = await response.json();
+                setAppointments(data.appointments);
             }
     }
 
