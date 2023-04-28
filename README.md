@@ -421,3 +421,122 @@ Delete an appointment	DELETE	http://localhost:8080/api/appointments/:id
 Set appointment status to canceled	PUT	http://localhost:8080/api/appointments/:id/cancel
 
 Set appointment status to finished	PUT	http://localhost:8080/api/appointments/:id/finish
+
+
+## Sales API calls
+
+List salespeople GET http://localhost:8090/api/salespeople/
+
+```
+{
+	"salespeople": [
+		{
+			"first_name": "Luis",
+			"last_name": "Bravo",
+			"employee_id": "12344",
+			"id": 1
+		},
+  ]
+}
+```
+Create a salespeople POST http://localhost:8090/api/salespeople/
+
+```
+{
+  "first_name": "marty",
+  "last_name": "goat",
+  "employee_id": "3123"
+}
+```
+response:
+
+```
+{
+	"first_name": "marty",
+	"last_name": "goat",
+	"employee_id": "3123",
+	"id": 5
+}
+```
+Delete a specific salespeople DELETE http://localhost:8090/api/salespeople/:id
+
+
+List customer GET http://localhost:8090/api/customers/
+
+```
+{
+	"customer": [
+		{
+			"first_name": "Heres",
+			"last_name": "Jonny",
+			"address": "123 YouDontNeedToKnow 2",
+			"phone_number": "6555433545",
+			"id": 1
+		}
+	]
+}
+```
+
+Create a customer POST http://localhost:8090/api/customers/
+
+```
+{
+	"first_name": "robbie",
+	"last_name": "goat",
+	"address": "123 youdontneedtoknow",
+	"phone_number": "2143134"
+}
+```
+response:
+
+```
+{
+	"first_name": "robbie",
+	"last_name": "goat",
+	"address": "123 youdontneedtoknow",
+	"phone_number": "2143134",
+	"id": 2
+}
+```
+Delete a specific customer DELETE http://localhost:8090/api/customers/:id
+
+
+List sales GET http://localhost:8090/api/sales/
+
+```
+{
+	"sales": [
+		{
+			"automobile": "bnjkdbakjudwa",
+			"sales_person": "Luis",
+			"customer": "Jonny",
+			"price": 32133,
+			"id": 1
+		}
+	]
+}
+```
+
+Create a sale POST http://localhost:8090/api/sales/ 
+
+```
+{
+	"automobile": "newnew",
+	"sales_person": 2,
+	"customer": 1,
+	"price": 32133
+}
+```
+
+response:
+
+```
+{
+	"automobile": "newnew",
+	"sales_person": 2,
+	"customer": 1,
+	"price": 32133
+  "id":2 
+}
+```
+Delete a sale DELETE http://localhost:8090/api/sales/:id
