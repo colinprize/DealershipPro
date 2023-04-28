@@ -1,3 +1,4 @@
+
 # CarCar
 
 Team:
@@ -118,6 +119,7 @@ Response:
 
 Update a specific manufacturer	PUT	http://localhost:8100/api/manufacturers/:id/
 Create a manufacturer  POST http://localhost:8100/api/manufacturers/
+```
 {
   "name": "Chrysler"
 }
@@ -130,6 +132,7 @@ Response:
   "name": "Chrysler"
 }
 
+```
 
 Get a specific manufacturer	GET	http://localhost:8100/api/manufacturers/:id/
 
@@ -144,14 +147,17 @@ List vehicle models	GET	http://localhost:8100/api/models/
 
 Create a vehicle model	POST	http://localhost:8100/api/models/
 
+```
 {
   "name": "Sebring",
   "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
   "manufacturer_id": 1
 }
+```
 
 response:
 
+```
 {
   "href": "/api/models/1/",
   "id": 1,
@@ -163,9 +169,11 @@ response:
     "name": "Daimler-Chrysler"
   }
 }
+```
 
 Get a specific vehicle model	GET	http://localhost:8100/api/models/:id/
 
+```
 {
   "href": "/api/models/1/",
   "id": 1,
@@ -177,13 +185,18 @@ Get a specific vehicle model	GET	http://localhost:8100/api/models/:id/
     "name": "Daimler-Chrysler"
   }
 }
+```
+
 
 Update a specific vehicle model	PUT	http://localhost:8100/api/models/:id/
 
+```
 {
   "name": "Sebring",
   "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg"
 }
+```
+
 
 Delete a specific vehicle model	DELETE	http://localhost:8100/api/models/:id/
 
@@ -194,6 +207,7 @@ Note: The identifiers for automobiles in this API are not integer ids. They are 
 
 List automobiles	            GET	http://localhost:8100/api/automobiles/
 
+```
 {
   "autos": [
     {
@@ -217,20 +231,24 @@ List automobiles	            GET	http://localhost:8100/api/automobiles/
     }
   ]
 }
+```
 
 
 
 Create an automobile	        POST	http://localhost:8100/api/automobiles/
 
+```
 {
   "color": "red",
   "year": 2012,
   "vin": "1C3CC5FB2AN120174",
   "model_id": 1
 }
+```
 
 Response:
 
+```
 {
   "href": "/api/automobiles/1C3CC5FB2AN120174/",
   "id": 1,
@@ -250,6 +268,7 @@ Response:
   },
   "sold": false
 }
+```
 
 
 Get a specific automobile	    GET	http://localhost:8100/api/automobiles/:vin/
@@ -264,11 +283,14 @@ http://localhost:8100/api/automobiles/1C3CC5FB2AN120174/
 Update a specific automobile	PUT	http://localhost:8100/api/automobiles/:vin/
 
 
+```
 {
   "color": "red",
   "year": 2012,
   "sold": true
 }
+```
+
 
 Delete a specific automobile	DELETE	http://localhost:8100/api/automobiles/:vin/
 
@@ -282,6 +304,7 @@ List technicians	GET	http://localhost:8080/api/technicians/
 Response:
 
 
+```
 {
 	"technicians": [
 		{
@@ -291,28 +314,34 @@ Response:
 		},
     ]
 }
+```
 
 
 Create a technician	POST	http://localhost:8080/api/technicians/
+```
 {
 	"first_name" : "Robert",
 	"last_name": "Marley",
 	"employee_id": "2246"
 }
+```
 
 response:
 
+```
 {
 	"first_name" : "Robert",
 	"last_name": "Marley",
 	"employee_id": "2246"
 }
+```
 
 
 Delete a specific technician	DELETE	http://localhost:8080/api/technicians/:id
 
 List appointments	GET	http://localhost:8080/api/appointments/
 
+```
 {
 	"appointments": [
 		{
@@ -335,10 +364,13 @@ List appointments	GET	http://localhost:8080/api/appointments/
 		},
         ]
 }
+```
+
 
 
 Create an appointment	POST	http://localhost:8080/api/appointments/
 
+```
 {
 			"date_time": "2024-11-25T14:30:00+00:00",
 			"reason": "car crash",
@@ -348,9 +380,11 @@ Create an appointment	POST	http://localhost:8080/api/appointments/
 			"technician": "Rick"
 }
 
+```
 
 response:
 
+```
 {
 	"date_time": "2024-11-25T14:30:00+00:00",
 	"reason": "car crash",
@@ -359,6 +393,7 @@ response:
 	"customer": "Prince",
 	"technician": "Rick"
 }
+```
 
 Delete an appointment	DELETE	http://localhost:8080/api/appointments/:id
 
