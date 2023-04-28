@@ -43,17 +43,15 @@ function CreateAppointment() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const dateObject = new Date(date + time)
-
 
 
 
         const data = {}
         data.vin = vin;
+        data.status = "BOOKED";
         data.customer = customer;
         data.reason = reason;
-        data.date_time = dateObject;
-        console.log(data.date_time)
+        data.date_time = `${date} ${time}`;
         data.technician = technician;
 
         const url = "http://localhost:8080/api/appointments/";
@@ -158,7 +156,7 @@ function CreateAppointment() {
                                 <option value="">Technician</option>
                                 {technicians.map((technician) => {
                                     return (
-                                        <option key={technician.employee_id} value={technician.employee_id}>
+                                        <option key={technician.employee_id} value={technician.first_name}>
                                             {technician.first_name + " " + technician.last_name}
                                         </option>
                                     );

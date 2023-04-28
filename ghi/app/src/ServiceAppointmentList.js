@@ -19,9 +19,9 @@ function ServiceAppointmentList () {
 
     const cancel = (appointment) => {
 
-        const url = `http://localhost:8080/api/appointments/${appointment.vin}/cancel`
+        const url = `http://localhost:8080/api/appointments/${appointment.vin}`
         const fetchConfig = {
-            method: 'put',
+            method: 'delete',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -29,9 +29,9 @@ function ServiceAppointmentList () {
     }
 
     const finish = (appointment) => {
-        const url = `http://localhost:8080/api/appointments/${appointment.vin}/finish`
+        const url = `http://localhost:8080/api/appointments/${appointment.vin}`
         const fetchConfig = {
-            method: 'put',
+            method: 'delete',
             headers: {
                 'Content-Type': 'application/json',
             },
