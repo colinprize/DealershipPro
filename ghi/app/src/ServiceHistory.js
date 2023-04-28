@@ -39,14 +39,14 @@ function ServiceHistory (){
     <div>
         <input
         type="text"
-        placeholder="Search"
+        placeholder="Search by VIN"
         value={vinQuery}
         onChange={handleVinQueryChange}
       />
         <button onClick={handleSearchButtonChange}
         type="button"
         className="btn btn-primary">
-        Enter VIN Query
+        Enter VIN Query For Service History
         </button>
         <table className="table table-striped">
             <thead>
