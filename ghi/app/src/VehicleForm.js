@@ -22,12 +22,14 @@ function VehicleForm() {
         setManufacturer(value);
     }
 
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = {}
         data.name = model;
         data.picture_url = picture;
         data.manufacturer_id = manufacturer;
+
 
         const url = 'http://localhost:8100/api/models/';
         const fetchConfig = {

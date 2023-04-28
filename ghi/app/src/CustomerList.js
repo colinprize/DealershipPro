@@ -1,7 +1,6 @@
 import React, { useEffect, useState  } from 'react';
 function CustomerList() {
     const [customer, setCustomer] = useState([]);
-    // const [customers, setCustomers] = useState([]);
 
 
 

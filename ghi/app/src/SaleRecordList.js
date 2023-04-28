@@ -34,7 +34,7 @@ function SalesRecordList() {
     return (
         <>
         <div className="d-grid gap-2 d-sm-flex mt-2 mb-2">
-            <Link to="/salesList/create" className="btn btn-primary btn-lg px-4 gap-3">Add a Sale</Link>
+            <Link to="/salerecords/new" className="btn btn-primary btn-lg px-4 gap-3">Add a Sale</Link>
             </div>
         <table className="table table-striped">
         <thead>

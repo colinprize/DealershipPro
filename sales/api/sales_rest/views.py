@@ -53,9 +53,9 @@ class SaleRecordEncoder(ModelEncoder):
 @require_http_methods(["GET", "POST"])
 def api_salesperson_list(request):
     if request.method == "GET":
-        salesperson = SalesPerson.objects.all()
+        salespeople = SalesPerson.objects.all()
         return JsonResponse(
-            {'salesperson': salesperson},
+            {'salespeople': salespeople},
             encoder=SalesPersonEncoder
         )
     else:
