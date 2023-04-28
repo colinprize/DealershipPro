@@ -52,7 +52,6 @@ function ServiceHistory (){
             <thead>
                 <tr>
                     <th>VIN</th>
-                    <th>VIP</th>
                     <th>Customer</th>
                     <th>Date</th>
                     <th>Time</th>
@@ -66,7 +65,6 @@ function ServiceHistory (){
                 return(
                 <tr key={appointment.vin}>
                     <td>{appointment.vin}</td>
-                    <td>{appointment.is_vip}</td>
                     <td>{appointment.customer}</td>
                     <td>{new Date(appointment.date_time).toLocaleDateString()}</td>
                     <td>{new Date(appointment.date_time).toLocaleDateString()}</td>

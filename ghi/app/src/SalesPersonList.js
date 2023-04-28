@@ -7,7 +7,7 @@ function SalesPersonList() {
 
         if (response.ok) {
             const data = await response.json();
-            setSalesPeople(data.salesperson);
+            setSalesPeople(data.salespeople);
         }
     }
 
@@ -28,7 +28,7 @@ function SalesPersonList() {
                     </tr>
                 </thead>
                 <tbody>
-                    {salespeople && salespeople.map(salesPerson => {
+                    {salespeople.map(salesPerson => {
                         return (
                             <tr key={salesPerson.id} value={salesPerson.href}>
                                 <td>{salesPerson.first_name}</td>
