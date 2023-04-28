@@ -91,8 +91,8 @@ def api_list_appointments(request):
         )
 
 @require_http_methods(["PUT"])
-def cancel_appointment(request, id):
-    appointment = Appointment.objects.get(id=id)
+def cancel_appointment(request, vin):
+    appointment = Appointment.objects.get(vin=vin)
     appointment.cancel()
     return JsonResponse(
         appointment,

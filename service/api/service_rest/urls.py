@@ -9,10 +9,10 @@ urlpatterns = [
         "appointments/", api_list_appointments, name="api_list_appointments"
     ),
     path(
-        "appointments/<int:vin>/cancel", cancel_appointment, name="cancel_appointment"
+        "appointments/<str:vin>/cancel", cancel_appointment, name="cancel_appointment"
     ),
     path(
-        "appointments/<int:vin>/finish", finish_appointment, name="finish_appointment"
+        "appointments/<str:vin>/finish", finish_appointment, name="finish_appointment"
     ),
     path(
         "technicians/<int:id>", delete_technician, name="delete_technician"

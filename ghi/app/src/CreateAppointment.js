@@ -44,6 +44,7 @@ function CreateAppointment() {
         event.preventDefault();
 
         const dateObject = new Date(date + "T" + time + ":00Z");
+        // console.log(dateObject)
         const dateFormat = dateObject.toISOString();
 
 
