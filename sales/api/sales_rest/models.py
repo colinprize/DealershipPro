@@ -4,7 +4,7 @@ from django.urls import reverse
 
 class AutomobileVO(models.Model):
     vin = models.CharField(max_length=17, unique=True)
-    sold = models.BooleanField(null=True)
+    import_href=models.CharField(max_length=200)
 
 
 class SalesPerson(models.Model):
@@ -12,12 +12,10 @@ class SalesPerson(models.Model):
     last_name = models.CharField(max_length=100)
     employee_id = models.CharField(
         max_length=100,
-        unique=True,
-        null=False
     )
 
     def get_api_url(self):
-        return reverse("salesperson", kwargs={"id": self.id})
+        return reverse("sales_person", kwargs={"id": self.id})
 
 
 class Customer(models.Model):
@@ -30,25 +28,21 @@ class Customer(models.Model):
 class SaleRecord(models.Model):
     automobile = models.ForeignKey(
         AutomobileVO,
-        related_name="salerecords",
-        on_delete=models.PROTECT,
+        related_name="automobile",
+        on_delete=models.CASCADE,
     )
 
     sales_person = models.ForeignKey(
         SalesPerson,
-        related_name="salerecords",
-        on_delete=models.PROTECT,
+        related_name="sales_person",
+        on_delete=models.CASCADE,
     )
 
     customer = models.ForeignKey(
         Customer,
-        related_name="salerecords",
-        on_delete=models.PROTECT,
+        related_name="customer",
+        on_delete=models.CASCADE,
     )
 
-    price = models.DecimalField(
-        null=False,
-        default=0.00,
-        max_digits=15,
-        decimal_places=2,
+    price = models.PositiveIntegerField(
     )

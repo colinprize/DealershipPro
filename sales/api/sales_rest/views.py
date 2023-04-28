@@ -9,7 +9,8 @@ class AutomobileVOEncoder(ModelEncoder):
     model = AutomobileVO
     properties = [
         "vin",
-        "sold",
+        "import_href",
+        "id"
     ]
 
 
@@ -19,6 +20,7 @@ class SalesPersonEncoder(ModelEncoder):
         "first_name",
         "last_name",
         "employee_id",
+        "id"
     ]
 
 
@@ -38,7 +40,7 @@ class SaleRecordEncoder(ModelEncoder):
     properties = [
         "automobile",
         "sales_person",
-        "cusomer",
+        "customer",
         "price",
         "id"
     ]
@@ -48,6 +50,12 @@ class SaleRecordEncoder(ModelEncoder):
         "sales_person": SalesPersonEncoder(),
         "customer": CustomerEncoder(),
     }
+
+    def get_extra_data(self, o):
+        return {"sales_person": o.sales_person.first_name,
+                "customer": o.customer.last_name,
+                "automobile": o.automobile.vin,
+                }
 
 
 @require_http_methods(["GET", "POST"])
@@ -68,7 +76,7 @@ def api_salesperson_list(request):
         )
 
 
-@require_http_methods(["DELETE", "GET", "PUT"])
+@require_http_methods(["GET", "PUT"])
 def api_detail_salesperson(request, id):
     if request.method == 'GET':
         try:
@@ -156,15 +164,15 @@ def customer_details(request, id):
 
 
 
-@require_http_methods(["GET", "POST"])
-def automobiles_list(request):
-    if request.method == "GET":
-        automobiles = AutomobileVO.objects.filter(sold=False)
-        return JsonResponse(
-            {"automobiles": automobiles},
-            encoder=AutomobileVOEncoder,
-            safe=False
-        )
+# @require_http_methods(["GET", "POST"])
+# def automobiles_list(request):
+#     if request.method == "GET":
+#         automobiles = AutomobileVO.objects.all()
+#         return JsonResponse(
+#             {"automobiles": automobiles},
+#             encoder=AutomobileVOEncoder,
+#             safe=False
+#         )
 
 
 @require_http_methods({"GET", "POST"})
@@ -178,14 +186,15 @@ def sales_list(request):
         )
     else:
         content = json.loads(request.body)
-
+        # print(content)
         try:
-            salesperson_id = content["salesPerson"]
-            salesperson = SalesPerson.objects.get(employee_id=salesperson_id)
-            content["salesPerson"] = salesperson
+            salesperson_id = content["sales_person"]
+            # print(content)
+            salesperson = SalesPerson.objects.get(id=salesperson_id)
+            content["sales_person"] = salesperson
         except SalesPerson.DoesNotExist:
             return JsonResponse(
-                {"message": "Invaild SalesPerson ID"},
+                {"message": "Invaild Sales_Person ID"},
                 status=400
             )
 
