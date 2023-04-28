@@ -2,9 +2,6 @@ import React, { useEffect, useState  } from 'react';
 function SalesPersonList() {
     const [salespeople, setSalesPeople] = useState([]);
 
-
-
-
     const fetchData = async () => {
         const response = await fetch("http://localhost:8090/api/salespeople/")
 

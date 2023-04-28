@@ -4,28 +4,14 @@ function SalesRecordList() {
     const [sales, setSalesList] = useState([]);
 
     const fetchData = async () => {
-        const url = "http://localhost:8090/api/sales/"
-        const response = await fetch(url);
-        // console.log(response)
-        if(response.ok) {
-            const data = await response.json();
-            console.log(data)
-            setSalesList(data.sales)
-        }
-    }
+      const url = "http://localhost:8090/api/sales/"
+      const response = await fetch(url);
+      if(response.ok) {
+          const data = await response.json();
+          setSalesList(data.sales)
+      }
+  }
 
-
-    // const handleDelete = async (salesList) => {
-    //     const saleListUrl = `http://localhost:8090/api/sales/${salesList.id}`
-    //     const fetchConfig = {
-    //         method: "delete"
-    //     }
-    //     const response = await fetch(saleListUrl, fetchConfig)
-    //     if(response.ok) {
-    //         fetchData();
-    //         // console.log("deleted");
-    //     }
-    // }
 
     useEffect(() => {
         fetchData();
@@ -53,9 +39,6 @@ function SalesRecordList() {
                     <td>{ sale.customer } </td>
                     <td>{ sale.automobile }</td>
                     <td>{ sale.price }</td>
-                    {/* <td>
-                          <button onClick={() => handleDelete(salesList)}>Delete</button>
-                      </td> */}
                   </tr>
                 );
               })}

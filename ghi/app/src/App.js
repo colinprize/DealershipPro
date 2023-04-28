@@ -16,10 +16,11 @@ import CustomerForm from './CustomerForm';
 import CustomerList from './CustomerList';
 import SalesRecordForm from './SaleRecordForm';
 import SalesRecordList from './SaleRecordList';
+import SaleRecordHistory from './SaleRecordHistory';
 import ServiceAppointmentList from './ServiceAppointmentList';
 import ServiceHistory from './ServiceHistory';
 
-function App(props) {
+function App() {
   return (
     <BrowserRouter>
       <Nav />
@@ -28,22 +29,23 @@ function App(props) {
           <Route path="/" element={<MainPage />} />
           <Route path="manufacturers" >
             <Route path="new" element={<ManufacturerForm />} />
-            <Route path="" element={<ManufacturerList manufacturers={props.manufacturers} />} />
+            <Route path="" element={<ManufacturerList />} />
           </Route>
           <Route path="automobiles" >
             <Route path="new" element={<AutomobileForm />}/>
           </Route>
           <Route path="salesperson" >
             <Route path="new" element={<SalesPersonForm />}/>
-            <Route path="" element={<SalesPersonList salespeople={props.salespeople} />} />
+            <Route path="" element={<SalesPersonList />} />
           </Route>
           <Route path="customer" >
             <Route path="new" element={<CustomerForm />}/>
-            <Route path="" element={<CustomerList customer={props.customer} />} />
+            <Route path="" element={<CustomerList />} />
           </Route>
           <Route path="salerecords" >
             <Route path="new" element={<SalesRecordForm />}/>
-            <Route path="" element={<SalesRecordList salesList={props.salesList} />} />
+            <Route path="" element={<SalesRecordList />} />
+            <Route path="history" element={<SaleRecordHistory />} />
           </Route>
           <Route path="vehicleform" element ={<VehicleForm />} />
           <Route path="vehiclelist" element ={<VehicleList />} />

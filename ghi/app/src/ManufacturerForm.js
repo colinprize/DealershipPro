@@ -28,7 +28,6 @@ function ManufacturerForm() {
         console.log(response)
         if(response.ok) {
             const newManufactor = await response.json()
-            console.log(newManufactor)
             setName('');
 
 

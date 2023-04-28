@@ -102,13 +102,13 @@ def api_detail_salesperson(request, id):
             )
         except SalesPerson.DoesNotExist:
             return JsonResponse({"message": "Invaild ID"}, status=404)
+    else:
+        try:
+            count, _ = SalesPerson.objects.filter(id=id).delete()
+            return JsonResponse({"deleted": count > 0})
+        except SalesPerson.DoesNotExist:
+            return JsonResponse({"message": "Invaild ID"}, status=404)
 
-
-@require_http_methods(["DELETE"])
-def delete_salesperson(request, id):
-    if request.method == "DELETE":
-        count, _ = SalesPerson.objects.filter(id=id).delete()
-        return JsonResponse({"deleted": count > 0})
 
 
 @require_http_methods(["GET", "POST"])
@@ -164,17 +164,6 @@ def customer_details(request, id):
 
 
 
-# @require_http_methods(["GET", "POST"])
-# def automobiles_list(request):
-#     if request.method == "GET":
-#         automobiles = AutomobileVO.objects.all()
-#         return JsonResponse(
-#             {"automobiles": automobiles},
-#             encoder=AutomobileVOEncoder,
-#             safe=False
-#         )
-
-
 @require_http_methods({"GET", "POST"})
 def sales_list(request):
     if request.method == "GET":
@@ -186,10 +175,8 @@ def sales_list(request):
         )
     else:
         content = json.loads(request.body)
-        # print(content)
         try:
             salesperson_id = content["sales_person"]
-            # print(content)
             salesperson = SalesPerson.objects.get(id=salesperson_id)
             content["sales_person"] = salesperson
         except SalesPerson.DoesNotExist:

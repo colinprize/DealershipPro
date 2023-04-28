@@ -33,12 +33,9 @@ function SalesRecordForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = {};
-        // data.salespeople = salespeople;
         data.sales_person = salespeople;
         data.customer = customer;
-        // data.customers = customers;
         data.automobile = auto;
-        // data.autos = autos;
         data.price = price;
 
 
@@ -82,9 +79,8 @@ function SalesRecordForm() {
         if (response.ok) {
             const data = await response.json();
             setSalesPerson(data.salesperson);
-        } else {
-            console.error(response);
         }
+
     }
 
 
@@ -93,8 +89,6 @@ function SalesRecordForm() {
         if (response.ok) {
             const data = await response.json();
             setCustomers(data.customer);
-        } else {
-            console.error(response);
         }
     }
 
