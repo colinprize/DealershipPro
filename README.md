@@ -103,6 +103,7 @@ Manufacturers
 List manufacturers	    GET	http://localhost:8100/api/manufacturers/
 Response:
 
+```
 {
   "manufacturers": [
     {
@@ -112,6 +113,8 @@ Response:
     }
   ]
 }
+```
+
 
 Update a specific manufacturer	PUT	http://localhost:8100/api/manufacturers/:id/
 Create a manufacturer  POST http://localhost:8100/api/manufacturers/
