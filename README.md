@@ -112,7 +112,7 @@ AutomobileVO is the Value Object being polled with the poller from automobile in
 
 6. To access the front end you can go to http://localhost:3000/ where the REACT app lives
 
-## Front End URLS
+## Front End URLs
 List of Manufacturers
 http://localhost:3000/manufacturers
 
@@ -231,7 +231,7 @@ Create a vehicle model	POST	http://localhost:8100/api/models/
 }
 ```
 
-response:
+Response:
 
 ```
 {
@@ -402,7 +402,7 @@ Create a technician	POST	http://localhost:8080/api/technicians/
 }
 ```
 
-response:
+Response:
 
 ```
 {
@@ -458,7 +458,7 @@ Create an appointment	POST	http://localhost:8080/api/appointments/
 
 ```
 
-response:
+Response:
 
 ```
 {
@@ -512,7 +512,7 @@ Create a salespeople POST http://localhost:8090/api/salespeople/
   "employee_id": "3123"
 }
 ```
-response:
+Response:
 
 ```
 {
@@ -558,7 +558,7 @@ Create a customer POST http://localhost:8090/api/customers/
 	"phone_number": "2143134"
 }
 ```
-response:
+Response:
 
 ```
 {
@@ -599,7 +599,7 @@ Create a sale POST http://localhost:8090/api/sales/
 }
 ```
 
-response:
+Response:
 
 ```
 {
