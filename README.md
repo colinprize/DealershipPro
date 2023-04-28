@@ -93,7 +93,7 @@ microservice, here.
 
 ## Project Diagram
 
-- Insert a diagram of the different services in your application, how they interact with each other, ports and URLs, Models and VO
+!CarDiagram2.png
 
 ## API Documentation
 
