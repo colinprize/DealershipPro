@@ -28,11 +28,12 @@ class AppointmentEncoder(ModelEncoder):
         'status',
         'vin',
         'customer',
-        'technician'
+        'technician',
     ]
-    encoders= {
-        "technician": TechnicianEncoder
-    }
+
+    def get_extra_data(self, o):
+        return {"technician": o.technician.first_name}
+
 
 @require_http_methods(["GET", "POST"])
 def api_technicians(request):
@@ -73,8 +74,15 @@ def api_list_appointments(request):
             encoder=AppointmentEncoder,
         )
     else:
-        request.method == "POST"
         content = json.loads(request.body)
+        try:
+            technician = Technician.objects.get(first_name=content["technician"])
+            content["technician"] = technician
+        except Technician.DoesNotExist:
+            return JsonResponse(
+                {"message": "That technician doesn't exist"},
+                status=400,
+            )
         appointment = Appointment.objects.create(**content)
         return JsonResponse(
             appointment,
@@ -94,8 +102,8 @@ def cancel_appointment(request, id):
 
 
 @require_http_methods(["PUT"])
-def finish_appointment(request, id):
-    appointment = Appointment.objects.get(id=id)
+def finish_appointment(request, vin):
+    appointment = Appointment.objects.get(vin=vin)
     appointment.finish()
     return JsonResponse(
         appointment,
@@ -104,6 +112,6 @@ def finish_appointment(request, id):
     )
 
 @require_http_methods(["DELETE"])
-def delete_appointment(request, id):
-    count, _ = Appointment.objects.filter(id=id).delete()
+def delete_appointment(request, vin):
+    count, _ = Appointment.objects.filter(vin=vin).delete()
     return JsonResponse({"deleted": count > 0})
