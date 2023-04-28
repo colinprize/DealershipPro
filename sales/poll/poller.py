@@ -11,8 +11,6 @@ django.setup()
 
 
 from sales_rest.models import AutomobileVO
-
-
 def get_automobiles():
     url = "http://project-beta-inventory-api-1:8000/api/automobiles/"
     response = requests.get(url)
