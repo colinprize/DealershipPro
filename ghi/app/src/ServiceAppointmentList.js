@@ -17,7 +17,7 @@ function ServiceAppointmentList () {
         fetchData();
     }, []);
 
-    const cancel = (appointment) => {
+    const cancel = async (appointment) => {
 
         const url = `http://localhost:8080/api/appointments/${appointment.vin}`
         const fetchConfig = {
@@ -26,9 +26,12 @@ function ServiceAppointmentList () {
                 'Content-Type': 'application/json',
             },
         };
+        const response = await fetch(url, fetchConfig);
+        const data = await response.json();
+        console.log(data)
     }
 
-    const finish = (appointment) => {
+    const finish = async (appointment) => {
         const url = `http://localhost:8080/api/appointments/${appointment.vin}`
         const fetchConfig = {
             method: 'delete',
@@ -36,6 +39,9 @@ function ServiceAppointmentList () {
                 'Content-Type': 'application/json',
             },
         };
+        const response = await fetch(url, fetchConfig);
+        const data = await response.json();
+        console.log(data)
     }
 
     return (
