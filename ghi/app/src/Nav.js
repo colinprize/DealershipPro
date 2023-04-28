@@ -17,7 +17,7 @@ function Nav() {
               <NavLink className='nav-link' to="manufacturers/new">Add Manufacturers</NavLink>
           </li>
           <li className='nav-item'>
-              <NavLink className='nav-link' to="automobiles/new">Add Automobiles</NavLink>
+              <NavLink className='nav-link' to="automobiles/new">Add Automobile to Inventory</NavLink>
           </li>
           <li className='nav-item'>
               <NavLink className='nav-link' to="vehicleform">Create a new Vehicle</NavLink>
@@ -32,10 +32,10 @@ function Nav() {
               <NavLink className='nav-link' to="addtech" >Add a Technician</NavLink>
           </li>
           <li className='nav-item'>
-              <NavLink className='nav-link' to="technicianlist" >List of Technicians</NavLink>
+              <NavLink className='nav-link' to="technicianlist" >Technicians</NavLink>
           </li>
           <li className='nav-item'>
-              <NavLink className='nav-link' to="createappointment" >Create Appointment</NavLink>
+              <NavLink className='nav-link' to="createappointment" >Create a Service Appointment</NavLink>
           </li>
           <li>
               <NavLink className='nav-link' to="salesperson/new">Add a Salesperson</NavLink>
@@ -59,7 +59,7 @@ function Nav() {
               <NavLink className='nav-link' to="salerecords">Sales</NavLink>
           </li>
           <li className='nav-item'>
-              <NavLink className='nav-link' to="serviceappointments">Service Appointment List</NavLink>
+              <NavLink className='nav-link' to="serviceappointments">Service Appointments</NavLink>
           </li>
           <li className='nav-item'>
               <NavLink className='nav-link' to="servicehistory">Service History</NavLink>

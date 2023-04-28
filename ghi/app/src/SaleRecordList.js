@@ -20,10 +20,11 @@ function SalesRecordList() {
 
     return (
         <>
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th>Salesperson ID</th>
+          <th>Salesperson ID</th>
+        <table className="table table-striped">
+        <thead>
+            <tr>
+                <th>Salesperson Employee ID</th>
                 <th>Salesperson Name</th>
                 <th>Customer</th>
                 <th>VIN</th>

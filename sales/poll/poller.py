@@ -12,12 +12,14 @@ django.setup()
 
 from sales_rest.models import AutomobileVO
 def get_automobiles():
-    response = requests.get("http://inventory-api:8000/api/automobiles/")
+    url = "http://project-beta-inventory-api-1:8000/api/automobiles/"
+    response = requests.get(url)
     content = json.loads(response.content)
-    for automobile in content["autos"]:
-        AutomobileVO.objects.update_or_create(vin=automobile["vin"],)
-
-
+    for automobile in content["automobiles"]:
+        AutomobileVO.objects.update_or_create(
+            vin=automobile["vin"],
+            defaults={"vin": automobile["vin"],}
+        )
 
 
 def poll():
