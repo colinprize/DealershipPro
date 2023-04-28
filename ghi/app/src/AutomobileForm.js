@@ -28,10 +28,6 @@ function AutomobileForm() {
         setModel(value);
     }
 
-    const handleModelsChange = (event) => {
-        const value = event.target.value;
-        setModels(value);
-    }
 
 
 

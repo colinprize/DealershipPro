@@ -1,30 +1,17 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 function SalesRecordList() {
-    const [salesList, setSalesList] = useState([]);
+    const [sales, setSalesList] = useState([]);
 
     const fetchData = async () => {
-        const url = "http://localhost:8090/api/sales/"
-        const response = await fetch(url);
-        if(response.ok) {
-            const data = await response.json();
-            setSalesList(data.sales)
-        }
-    }
+      const url = "http://localhost:8090/api/sales/"
+      const response = await fetch(url);
+      if(response.ok) {
+          const data = await response.json();
+          setSalesList(data.sales)
+      }
+  }
 
-
-    const handleDelete = async (salesList) => {
-        const saleListUrl = `http://localhost:8090/api/sales/${salesList.id}`
-        const fetchConfig = {
-            method: "delete"
-        }
-        const response = await fetch(saleListUrl, fetchConfig)
-        if(response.ok) {
-            fetchData();
-            console.log("deleted");
-        }
-    }
 
     useEffect(() => {
         fetchData();
@@ -33,9 +20,7 @@ function SalesRecordList() {
 
     return (
         <>
-        <div className="d-grid gap-2 d-sm-flex mt-2 mb-2">
-            <Link to="/salerecords/new" className="btn btn-primary btn-lg px-4 gap-3">Add a Sale</Link>
-            </div>
+          <th>Salesperson ID</th>
         <table className="table table-striped">
         <thead>
             <tr>
@@ -44,27 +29,24 @@ function SalesRecordList() {
                 <th>Customer</th>
                 <th>VIN</th>
                 <th>Price</th>
-            </tr>
+              </tr>
             </thead>
             <tbody>
-            {salesList.map((sales) => {
+              {sales.map((sale) => {
                 return (
-                <tr key={sales.id}>
-                    <td>{ sales.salesperson.employee_id }</td>
-                    <td>{ sales.salesperson.first_name } { sales.salesperson.last_name }</td>
-                    <td>{ sales.customer.first_name } { sales.customer.last_name }</td>
-                    <td>{ sales.automobile.vin }</td>
-                    <td>${ sales.price }</td>
-                    <td>
-                        <button onClick={() => handleDelete(salesList)}>Delete</button>
-                    </td>
-                </tr>
+                  <tr key={sale.id}>
+                    <td>{ sale.id }</td>
+                    <td>{ sale.sales_person }</td>
+                    <td>{ sale.customer } </td>
+                    <td>{ sale.automobile }</td>
+                    <td>{ sale.price }</td>
+                  </tr>
                 );
-            })}
+              })}
             </tbody>
-        </table>
+          </table>
         </>
-    )
+    );
 }
 
 export default SalesRecordList;

@@ -1,9 +1,6 @@
 import React, { useEffect, useState  } from 'react';
 function SalesPersonList() {
     const [salespeople, setSalesPeople] = useState([]);
-    const [salesPerson, setSalesPerson] = useState([]);
-
-
 
     const fetchData = async () => {
         const response = await fetch("http://localhost:8090/api/salespeople/")
@@ -33,7 +30,7 @@ function SalesPersonList() {
                 <tbody>
                     {salespeople && salespeople.map(salesPerson => {
                         return (
-                            <tr key={salesPerson.id} value={salesPerson.id}>
+                            <tr key={salesPerson.id} value={salesPerson.href}>
                                 <td>{salesPerson.first_name}</td>
                                 <td>{salesPerson.last_name}</td>
                                 <td>{salesPerson.employee_id}</td>

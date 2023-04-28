@@ -42,7 +42,6 @@ function SalesPersonForm() {
         console.log(response)
         if(response.ok) {
             const newSalesPerson = await response.json()
-            console.log(newSalesPerson)
             setFirst('');
             setLast('');
             setEmp('');

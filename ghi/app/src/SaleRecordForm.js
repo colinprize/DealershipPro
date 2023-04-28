@@ -2,21 +2,21 @@ import React, { useEffect, useState } from "react";
 
 function SalesRecordForm() {
     const [salespeople, setSalesPeople] = useState('');
-    const [salesPerson, setSalesPerson] = useState('');
+    const [salesPerson, setSalesPerson] = useState([]);
     const [customer, setCustomer] = useState('');
-    const [customers, setCustomers] = useState('');
+    const [customers, setCustomers] = useState([]);
     const [auto, setAuto] = useState('');
     const [autos, setAutos] = useState([]);
     const [price, setPrice] = useState('');
 
     const handlePeopleChange = (event) => {
         const value = event.target.value;
-        setSalesPerson(value);
+        setSalesPeople(value);
     }
 
     const handleCustomerChange = (event) => {
         const value = event.target.value;
-        setCustomers(value);
+        setCustomer(value);
     }
 
     const handleVinChange = (event) => {
@@ -33,12 +33,9 @@ function SalesRecordForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = {};
-        data.salespeople = salespeople;
-        data.salesPerson = salesPerson;
+        data.sales_person = salespeople;
         data.customer = customer;
-        data.customers = customers;
-        data.auto = auto;
-        data.autos = autos;
+        data.automobile = auto;
         data.price = price;
 
 
@@ -57,9 +54,9 @@ function SalesRecordForm() {
         if(response.ok) {
             const newSale = await response.json()
             console.log(newSale)
-            setSalesPerson();
-            setCustomers('');
-            setAutos('');
+            setSalesPeople('');
+            setCustomer('');
+            setAuto('');
             setPrice('');
         }
     }
@@ -81,10 +78,9 @@ function SalesRecordForm() {
         const response = await fetch("http://localhost:8090/api/salespeople/");
         if (response.ok) {
             const data = await response.json();
-            setSalesPeople(data.salesperson);
-        } else {
-            console.error(response);
+            setSalesPerson(data.salesperson);
         }
+
     }
 
 
@@ -92,9 +88,7 @@ function SalesRecordForm() {
         const response = await fetch("http://localhost:8090/api/customers/");
         if (response.ok) {
             const data = await response.json();
-            setCustomer(data.customer);
-        } else {
-            console.error(response);
+            setCustomers(data.customer);
         }
     }
 
@@ -105,6 +99,8 @@ function SalesRecordForm() {
     }, []);
 
 
+
+
     return (
         <div className="row">
             <div className="offset-3 col-6">
@@ -112,11 +108,11 @@ function SalesRecordForm() {
                     <h2 className="display-5 text-center"><b>Record a sale</b></h2>
                     <form onSubmit={handleSubmit} id="Record a sale">
                         <div className="form-floating mb-3">
-                        <select onChange={handleVinChange} value={auto} required name="auto" id="vin" className="form-select">
-                        <option value="" key="default">Choose a automobile VIN</option>
-                            {autos.map(auto => {
+                        <select onChange={handleVinChange} value={auto} required type="" id="vin" className="form-select">
+                        <option value="" >Choose a automobile VIN</option>
+                            {autos?.map(auto => {
                                 return (
-                                    <option key={auto.vin} value={auto.vin}>
+                                    <option key={auto.id} value={auto.vin}>
                                      {auto.vin}
                                     </option>
                                 )
@@ -124,24 +120,24 @@ function SalesRecordForm() {
                         </select>
                         </div>
                         <div className="form-floating mb-3">
-                        <select onChange={handlePeopleChange} value={salesPerson} required name="salesPerson" id="salesPerson" className="form-select">
-                        <option value="" key="default">Choose a salesperson</option>
-                            {salespeople && salespeople.map(salesPerson => {
+                        <select onChange={handlePeopleChange} value={salespeople} name="sales_person" id="sales_person" className="form-select">
+                        <option value="" >Choose a salesperson</option>
+                            {salesPerson?.map(sales_person => {
                                 return (
-                                    <option key={salesPerson.id} value={salesPerson.id}>
-                                     {salesPerson.first_name} {salesPerson.last_name}
+                                    <option key={sales_person.id} value={sales_person.id}>
+                                     {sales_person.first_name} {sales_person.last_name}
                                     </option>
                                 )
                             })}
                         </select>
                         </div>
                         <div className="form-floating mb-3">
-                        <select onChange={handleCustomerChange} value={customers} required type="text" id="customer" className="form-select">
-                        <option value="" key="default">Choose a customer</option>
-                            {customer && customer.map(customers => {
+                        <select onChange={handleCustomerChange} value={customer} required name="" id="customer" className="form-select">
+                        <option value="">Choose a customer</option>
+                            {customers?.map(customer => {
                                 return (
-                                    <option key={customers.id} value={customers.id}>
-                                     {customers.first_name} {customers.last_name}
+                                    <option key={customer.id} value={customer.id}>
+                                     {customer.first_name} {customer.last_name}
                                     </option>
                                 )
                             })}
