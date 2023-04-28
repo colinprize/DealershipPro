@@ -471,7 +471,16 @@ response:
 }
 ```
 
-Delete an appointment	DELETE	http://localhost:8080/api/appointments/:id
+Delete an appointment	DELETE	http://localhost:8080/api/appointments/<str:vin>
+
+Response:
+
+```
+{
+	"deleted": true
+}
+```
+
 
 Set appointment status to canceled	PUT	http://localhost:8080/api/appointments/:id/cancel
 
@@ -515,6 +524,13 @@ response:
 ```
 Delete a specific salespeople DELETE http://localhost:8090/api/salespeople/:id
 
+Response:
+
+```
+{
+	"deleted": true
+}
+```
 
 List customer GET http://localhost:8090/api/customers/
 
