@@ -65,11 +65,33 @@ If the car was purchased from Inventory then they receive VIP treatment
 
 ## Sales microservice
 
-Explain your models and integration with the inventory
-microservice, here.
+Sales Microservice Models
 
 
+    AutomobileVO:
+        vin
+        import_href
+    
+    SalesPerson:
+        first_name
+        last_name
+        employee_id
 
+    Customer:
+        first_name
+        last_name
+        address
+        phone_number
+
+    SaleRecord:
+        automobile(Foreign key with AutomobileVO)
+        sales_person(Foreign key with SalesPerson)
+        customer(Foreign key with Customer)
+        price
+
+Sales and SaleRecord pulls vin to record sales.
+
+AutomobileVO is the Value Object being polled with the poller from automobile in inventory.
 
 
 ## How to Run this Project
