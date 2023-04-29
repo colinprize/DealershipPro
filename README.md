@@ -63,6 +63,8 @@ Service Microservice Models
 
 If the car was purchased from Inventory then they receive VIP treatment
 
+AutomobileVO is the value object being polled with the poller from Automobile in the Inventory API.
+
 ## Sales microservice
 
 Sales Microservice Models
@@ -91,7 +93,7 @@ Sales Microservice Models
 
 Sales and SaleRecord pulls vin to record sales.
 
-AutomobileVO is the Value Object being polled with the poller from automobile in inventory.
+AutomobileVO is the Value Object being polled with the poller from automobile in the Inventory API
 
 
 ## How to Run this Project
