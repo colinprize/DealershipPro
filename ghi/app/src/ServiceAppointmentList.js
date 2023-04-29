@@ -17,25 +17,31 @@ function ServiceAppointmentList () {
         fetchData();
     }, []);
 
-    const cancel = (appointment) => {
+    const cancel = async (appointment) => {
 
-        const url = `http://localhost:8080/api/appointments/${appointment.vin}/cancel`
+        const url = `http://localhost:8080/api/appointments/${appointment.vin}`
         const fetchConfig = {
-            method: 'put',
+            method: 'delete',
             headers: {
                 'Content-Type': 'application/json',
             },
         };
+        const response = await fetch(url, fetchConfig);
+        const data = await response.json();
+        console.log(data)
     }
 
-    const finish = (appointment) => {
-        const url = `http://localhost:8080/api/appointments/${appointment.vin}/finish`
+    const finish = async (appointment) => {
+        const url = `http://localhost:8080/api/appointments/${appointment.vin}`
         const fetchConfig = {
-            method: 'put',
+            method: 'delete',
             headers: {
                 'Content-Type': 'application/json',
             },
         };
+        const response = await fetch(url, fetchConfig);
+        const data = await response.json();
+        console.log(data)
     }
 
     return (

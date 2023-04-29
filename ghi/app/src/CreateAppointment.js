@@ -43,16 +43,15 @@ function CreateAppointment() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const dateObject = new Date(date + "T" + time + ":00Z");
 
-        const dateFormat = dateObject.toISOString();
 
 
         const data = {}
         data.vin = vin;
+        data.status = "BOOKED";
         data.customer = customer;
         data.reason = reason;
-        data.date_time = dateFormat;
+        data.date_time = `${date} ${time}`;
         data.technician = technician;
 
         const url = "http://localhost:8080/api/appointments/";

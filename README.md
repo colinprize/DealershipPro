@@ -65,11 +65,33 @@ If the car was purchased from Inventory then they receive VIP treatment
 
 ## Sales microservice
 
-Explain your models and integration with the inventory
-microservice, here.
+Sales Microservice Models
 
 
+    AutomobileVO:
+        vin
+        import_href
+    
+    SalesPerson:
+        first_name
+        last_name
+        employee_id
 
+    Customer:
+        first_name
+        last_name
+        address
+        phone_number
+
+    SaleRecord:
+        automobile(Foreign key with AutomobileVO)
+        sales_person(Foreign key with SalesPerson)
+        customer(Foreign key with Customer)
+        price
+
+Sales and SaleRecord pulls vin to record sales.
+
+AutomobileVO is the Value Object being polled with the poller from automobile in inventory.
 
 
 ## How to Run this Project
@@ -89,6 +111,61 @@ microservice, here.
 5. To access the API backend you can make HTTP requests using Insomnia.
 
 6. To access the front end you can go to http://localhost:3000/ where the REACT app lives
+
+## Front End URLs
+List of Manufacturers
+http://localhost:3000/manufacturers
+
+Create a new Manufacturer
+http://localhost:3000/manufacturers/new
+
+Add a new automobile to inventory
+http://localhost:3000/automobiles/new
+
+Create a new vehicle
+http://localhost:3000/vehicleform
+
+List of new vehicles
+http://localhost:3000/vehiclelist
+
+Inventory list
+http://localhost:3000/automobileinventorylist
+
+Add a Technician
+http://localhost:3000/addtech
+
+Technician List
+http://localhost:3000/technicianlist
+
+Create Service Appointment
+http://localhost:3000/createappointment
+
+Create a new Salesperson
+http://localhost:3000/salesperson/new
+
+List of Salespeople
+http://localhost:3000/salesperson
+
+Add a customer
+http://localhost:3000/customer/new
+
+List of Customers
+http://localhost:3000/customer
+
+Add a sale
+http://localhost:3000/salerecords/new
+
+Salespeople History
+http://localhost:3000/salerecords/history
+
+Sales list
+http://localhost:3000/salerecords
+
+List of Service Appointments
+http://localhost:3000/serviceappointments
+
+Service History
+http://localhost:3000/servicehistory
 
 
 ## Project Diagram
@@ -154,7 +231,7 @@ Create a vehicle model	POST	http://localhost:8100/api/models/
 }
 ```
 
-response:
+Response:
 
 ```
 {
@@ -325,7 +402,7 @@ Create a technician	POST	http://localhost:8080/api/technicians/
 }
 ```
 
-response:
+Response:
 
 ```
 {
@@ -381,7 +458,7 @@ Create an appointment	POST	http://localhost:8080/api/appointments/
 
 ```
 
-response:
+Response:
 
 ```
 {
@@ -394,8 +471,143 @@ response:
 }
 ```
 
-Delete an appointment	DELETE	http://localhost:8080/api/appointments/:id
+Delete an appointment	DELETE	http://localhost:8080/api/appointments/<str:vin>
+
+Response:
+
+```
+{
+	"deleted": true
+}
+```
+
 
 Set appointment status to canceled	PUT	http://localhost:8080/api/appointments/:id/cancel
 
 Set appointment status to finished	PUT	http://localhost:8080/api/appointments/:id/finish
+
+
+## Sales API calls
+
+List salespeople GET http://localhost:8090/api/salespeople/
+
+```
+{
+	"salespeople": [
+		{
+			"first_name": "Luis",
+			"last_name": "Bravo",
+			"employee_id": "12344",
+			"id": 1
+		},
+  ]
+}
+```
+Create a salespeople POST http://localhost:8090/api/salespeople/
+
+```
+{
+  "first_name": "marty",
+  "last_name": "goat",
+  "employee_id": "3123"
+}
+```
+Response:
+
+```
+{
+	"first_name": "marty",
+	"last_name": "goat",
+	"employee_id": "3123",
+	"id": 5
+}
+```
+Delete a specific salespeople DELETE http://localhost:8090/api/salespeople/:id
+
+Response:
+
+```
+{
+	"deleted": true
+}
+```
+
+List customer GET http://localhost:8090/api/customers/
+
+```
+{
+	"customer": [
+		{
+			"first_name": "Heres",
+			"last_name": "Jonny",
+			"address": "123 YouDontNeedToKnow 2",
+			"phone_number": "6555433545",
+			"id": 1
+		}
+	]
+}
+```
+
+Create a customer POST http://localhost:8090/api/customers/
+
+```
+{
+	"first_name": "robbie",
+	"last_name": "goat",
+	"address": "123 youdontneedtoknow",
+	"phone_number": "2143134"
+}
+```
+Response:
+
+```
+{
+	"first_name": "robbie",
+	"last_name": "goat",
+	"address": "123 youdontneedtoknow",
+	"phone_number": "2143134",
+	"id": 2
+}
+```
+Delete a specific customer DELETE http://localhost:8090/api/customers/:id
+
+
+List sales GET http://localhost:8090/api/sales/
+
+```
+{
+	"sales": [
+		{
+			"automobile": "bnjkdbakjudwa",
+			"sales_person": "Luis",
+			"customer": "Jonny",
+			"price": 32133,
+			"id": 1
+		}
+	]
+}
+```
+
+Create a sale POST http://localhost:8090/api/sales/ 
+
+```
+{
+	"automobile": "newnew",
+	"sales_person": 2,
+	"customer": 1,
+	"price": 32133
+}
+```
+
+Response:
+
+```
+{
+	"automobile": "newnew",
+	"sales_person": 2,
+	"customer": 1,
+	"price": 32133
+  "id":2 
+}
+```
+Delete a sale DELETE http://localhost:8090/api/sales/:id

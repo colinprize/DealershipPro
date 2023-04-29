@@ -18,6 +18,6 @@ urlpatterns = [
         "technicians/<int:id>", delete_technician, name="delete_technician"
     ),
     path(
-        "appointments/<int:id>", delete_appointment, name="delete_appointment"
+        "appointments/<str:vin>", delete_appointment, name="delete_appointment"
     ),
 ]
