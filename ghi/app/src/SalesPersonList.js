@@ -30,7 +30,7 @@ function SalesPersonList() {
                 <tbody>
                     {salespeople.map(salesPerson => {
                         return (
-                            <tr key={salesPerson.id} value={salesPerson.id}>
+                            <tr key={salesPerson.id} value={salesPerson.href}>
                                 <td>{salesPerson.first_name}</td>
                                 <td>{salesPerson.last_name}</td>
                                 <td>{salesPerson.employee_id}</td>
