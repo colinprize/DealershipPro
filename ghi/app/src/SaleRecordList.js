@@ -20,7 +20,6 @@ function SalesRecordList() {
 
     return (
         <>
-          <h1>Salesperson ID</h1>
           <div>Salesperson ID</div>
         <table className="table table-striped">
         <thead>
